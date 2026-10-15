@@ -1,0 +1,10 @@
+{
+    "editor.stickyScroll.enabled": false,
+    "editor.minimap.enabled": false,
+    "[php]": {
+        "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
+    },
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay",
+    "editor.multiCursorModifier": "ctrlCmd"
+}
