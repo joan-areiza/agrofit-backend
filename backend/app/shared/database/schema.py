@@ -416,8 +416,11 @@ def init_db():
 		CREATE TABLE IF NOT EXISTS `aprendices` (
 		`id_aprendiz_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_usuario_aprendiz_fk` int(11) NOT NULL,
+        `id_estado_aprendiz_fk` int(11) NOT NULL,
 		PRIMARY KEY (`id_aprendiz_pk`),
 		KEY `id_usuario_aprendiz_fk` (`id_usuario_aprendiz_fk`),
+        KEY `id_estado_aprendiz_fk` (`id_estado_aprendiz_fk`),
+		CONSTRAINT `id_estado_aprendiz_fk` FOREIGN KEY (`id_estado_aprendiz_fk`) REFERENCES `estados_aprendiz` (`id_estado_aprendiz_pk`) ON UPDATE CASCADE,
 		CONSTRAINT `id_usuario_aprendiz_fk` FOREIGN KEY (`id_usuario_aprendiz_fk`) REFERENCES `usuarios` (`id_Usuario_PK`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
