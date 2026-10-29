@@ -8,14 +8,16 @@
 
 from django.db import models
 
+
 # Create your models here.
 class Regiones(models.Model):
     id_region_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_region = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'regiones'
+
+        db_table = "regiones"
+
 
 class Departamentos(models.Model):
     cod_departamento_pk = models.CharField(max_length=6)
@@ -25,8 +27,9 @@ class Departamentos(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "departamentos"
+
 
 class Municipios(models.Model):
     cod_municipio_pk = models.CharField(max_length=6)
@@ -36,42 +39,46 @@ class Municipios(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "municipios"
 
+
 class CentrosFormacion(models.Model):
+    id_centro_pk = models.AutoField(primary_key=True, blank=True, null=True)
     cod_centro_pk = models.CharField(max_length=6)
     nombre_centro = models.CharField(max_length=100)
     direccion_centro = models.CharField(max_length=150)
+    dias_permitidos = models.IntegerField()
     cod_municipio_centro_fk = models.ForeignKey(
         "Municipios", models.DO_NOTHING, db_column="cod_municipio_centro_fk"
     )
 
     class Meta:
-        
+
         db_table = "centros_formacion"
+
 
 class Sedes(models.Model):
     id_sede_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_sede = models.CharField(max_length=100)
     direccion_sede = models.CharField(max_length=50)
-    cod_centro_sede_fk = models.ForeignKey(
-        CentrosFormacion, models.DO_NOTHING, db_column="cod_centro_sede_fk"
+    id_centro_sede_fk = models.ForeignKey(
+        CentrosFormacion, models.DO_NOTHING, db_column="id_centro_sede_fk"
     )
 
     class Meta:
-        
         db_table = "sedes"
+
 
 class DependenciasFuncionario(models.Model):
     id_dependencia_funcionario_pk = models.AutoField(
         primary_key=True, blank=True, null=True
     )
     nombre_dependencia_funcionario = models.CharField(max_length=100)
-    cod_centro_dependencia_fk = models.ForeignKey(
-        CentrosFormacion, models.DO_NOTHING, db_column="cod_centro_dependencia_fk"
+    id_centro_dependencia_fk = models.ForeignKey(
+        CentrosFormacion, models.DO_NOTHING, db_column="id_centro_dependencia_fk"
     )
 
     class Meta:
-        
+
         db_table = "dependencias_funcionario"

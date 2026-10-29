@@ -7,8 +7,23 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 
 from django.db import models
+from usuarios.models import Aprendices
+from rutinas.models import ObjetivosRutina
+from rutinas.models import ComplexionesFisicas
+from usuarios.models import Entrenadores
+from usuarios.models import AntecedentesMedicos
+
 
 # Create your models here.
+class EstadosAsignacion(models.Model):
+    id_estado_asignacion_pk = models.IntegerField()
+    nombre_estado_asignacion = models.CharField(max_length=100)
+
+    class Meta:
+
+        db_table = "estados_asignacion"
+
+
 class AsignacionesRutinaUsuario(models.Model):
     id_asignacion_rutina_usuario_pk = models.AutoField(
         primary_key=True, blank=True, null=True
@@ -21,14 +36,19 @@ class AsignacionesRutinaUsuario(models.Model):
     )
     fecha_hora_inicio_asignacion_rutina = models.DateTimeField()
     fecha_hora_fin_asignacion_rutina = models.DateTimeField()
-    estado_asignacion_rutina = models.TextField()  # This field type is a guess.
+    id_estado_asignacion_rutina_fk = models.ForeignKey(
+        "EstadosAsignacion",
+        models.DO_NOTHING,
+        db_column="id_estado_asignacion_rutina_fk",
+    )
     id_entrenador_asigna_rutina_fk = models.ForeignKey(
         "Entrenadores", models.DO_NOTHING, db_column="id_entrenador_asigna_rutina_fk"
     )
 
     class Meta:
-        
+
         db_table = "asignaciones_rutina_usuario"
+
 
 class Asistencias(models.Model):
     id_asistencia_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -45,8 +65,9 @@ class Asistencias(models.Model):
     estado_asistencia = models.TextField()  # This field type is a guess.
 
     class Meta:
-        
+
         db_table = "asistencias"
+
 
 class EvaluacionesFisicas(models.Model):
     id_evaluacion_fisica_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -70,6 +91,9 @@ class EvaluacionesFisicas(models.Model):
         max_digits=10, decimal_places=5
     )  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
     observacion_evaluacion = models.TextField(blank=True, null=True)
+    id_usuario_evaluacion_fk = models.ForeignKey(
+        "Usuarios", models.DO_NOTHING, db_column="id_usuario_evaluacion_fk"
+    )
     id_entrenador_encargado_evaluacion_fk = models.ForeignKey(
         Entrenadores,
         models.DO_NOTHING,
@@ -81,27 +105,50 @@ class EvaluacionesFisicas(models.Model):
         db_column="id_complexion_fisica_evaluacion_fk",
     )
     presion_arterial = models.CharField(max_length=50)
-    id_usuario_evaluacion_fk = models.ForeignKey(
-        "Usuarios", models.DO_NOTHING, db_column="id_usuario_evaluacion_fk"
-    )
+    imc_evaluacion = models.DecimalField(
+        max_digits=10, decimal_places=5
+    )  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    medida_cintura = models.DecimalField(
+        max_digits=10, decimal_places=5, blank=True, null=True
+    )  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    medida_cadera = models.DecimalField(
+        max_digits=10, decimal_places=5, blank=True, null=True
+    )  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
 
     class Meta:
-        
+
         db_table = "evaluaciones_fisicas"
+
+
+class EstadosSeguimiento(models.Model):
+    id_estado_seguimiento_pk = models.IntegerField()
+    nombre_estado_seguimiento = models.CharField(max_length=100)
+
+    class Meta:
+
+        db_table = "estados_seguimiento"
+
 
 class SeguimientosProgresoUsuario(models.Model):
     id_seguimiento_progreso_usuario_pk = models.AutoField(
         primary_key=True, blank=True, null=True
     )
     horas_ludicas = models.IntegerField()
-    id_usuario_progreso_fk = models.ForeignKey(
-        "Usuarios", models.DO_NOTHING, db_column="id_usuario_progreso_fk"
-    )
     rutinas_completadas = models.IntegerField()
     fecha_registro_progreso = models.DateField()
+    id_estado_seguimiento_fk = models.ForeignKey(
+        EstadosSeguimiento, models.DO_NOTHING, db_column="id_estado_seguimiento_fk"
+    )
+    id_evaluacion_fisica_fk = models.ForeignKey(
+        EvaluacionesFisicas, models.DO_NOTHING, db_column="id_evaluacion_fisica_fk"
+    )
     observacion_progreso_usuario = models.TextField(blank=True, null=True)
+    id_objetivo_actual_fk = models.ForeignKey(
+        ObjetivosRutina, models.DO_NOTHING, db_column="id_objetivo_actual_fk"
+    )
+    logros_avances = models.TextField(blank=True, null=True)
+    aspectos_a_mejorar = models.TextField(blank=True, null=True)
 
     class Meta:
-        
-        db_table = "seguimientos_progreso_usuario"
 
+        db_table = "seguimientos_progreso_usuario"

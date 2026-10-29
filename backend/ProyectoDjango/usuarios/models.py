@@ -7,6 +7,11 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 
 from django.db import models
+from programas.models import FichasFormacion
+from centros.models import Departamentos
+from centros.models import Municipios
+from centros.models import DependenciasFuncionario
+
 
 # Create your models here.
 class Sexos(models.Model):
@@ -14,40 +19,45 @@ class Sexos(models.Model):
     nombre_sexo = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'sexos'
+
+        db_table = "sexos"
+
 
 class TiposDocumento(models.Model):
     cod_tipo_documento_pk = models.CharField(max_length=6)
     nombre_tipo_documento = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'tipos_documento'
+
+        db_table = "tipos_documento"
+
 
 class TiposSangre(models.Model):
     cod_tipo_sangre_pk = models.CharField(max_length=6)
     nombre_tipo_sangre = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'tipos_sangre'
+
+        db_table = "tipos_sangre"
+
 
 class EstadosCivil(models.Model):
     id_estado_civil_pk = models.IntegerField()
     nombre_estado_civil = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'estados_civil'
+
+        db_table = "estados_civil"
+
 
 class Roles(models.Model):
     id_rol_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_rol = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'roles'
+
+        db_table = "roles"
+
 
 class Hospitales(models.Model):
     cod_hospital_pk = models.CharField(max_length=6)
@@ -55,8 +65,9 @@ class Hospitales(models.Model):
     direccion_hospital = models.CharField(max_length=150)
 
     class Meta:
-        
-        db_table = 'hospitales'
+
+        db_table = "hospitales"
+
 
 class Eps(models.Model):
     cod_eps_pk = models.CharField(max_length=6)
@@ -65,48 +76,58 @@ class Eps(models.Model):
     direccion_eps = models.CharField(max_length=150)
 
     class Meta:
-        
-        db_table = 'eps'
+
+        db_table = "eps"
+
 
 class NivelesAdministrador(models.Model):
-    id_nivel_administrador_pk = models.AutoField(primary_key=True, blank=True, null=True)
+    id_nivel_administrador_pk = models.AutoField(
+        primary_key=True, blank=True, null=True
+    )
     nombre_nivel_administrador = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'niveles_administrador'
+
+        db_table = "niveles_administrador"
+
 
 class EspecialidadesEntrenador(models.Model):
-    id_especialidad_entrenador_pk = models.AutoField(primary_key=True, blank=True, null=True)
+    id_especialidad_entrenador_pk = models.AutoField(
+        primary_key=True, blank=True, null=True
+    )
     nombre_especialidad_entrenador = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'especialidades_entrenador'
+
+        db_table = "especialidades_entrenador"
+
 
 class EstadosAprendiz(models.Model):
     id_estado_aprendiz_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_estado_aprendiz = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'estados_aprendiz'
+
+        db_table = "estados_aprendiz"
+
 
 class EstadosFuncionario(models.Model):
     id_estado_funcionario_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_estado_funcionario = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'estados_funcionario'
+
+        db_table = "estados_funcionario"
+
 
 class AntecedentesMedicos(models.Model):
     id_antecedente_medico_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_antecedente_medico = models.CharField(max_length=100)
 
     class Meta:
-        
+
         db_table = "antecedentes_medicos"
+
 
 class Usuarios(models.Model):
     id_usuario_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -151,8 +172,9 @@ class Usuarios(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "usuarios"
+
 
 class Entrenadores(models.Model):
     id_entrenador_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -167,8 +189,9 @@ class Entrenadores(models.Model):
     estado_entrenador = models.TextField()  # This field type is a guess.
 
     class Meta:
-        
+
         db_table = "entrenadores"
+
 
 class Administradores(models.Model):
     id_administrador_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -186,8 +209,9 @@ class Administradores(models.Model):
     estado_administrador = models.TextField()  # This field type is a guess.
 
     class Meta:
-        
+
         db_table = "administradores"
+
 
 class Funcionarios(models.Model):
     id_funcionario_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -204,8 +228,9 @@ class Funcionarios(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "funcionarios"
+
 
 class Aprendices(models.Model):
     id_aprendiz_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -220,8 +245,9 @@ class Aprendices(models.Model):
     )
 
     class Meta:
-        
-        db_table = "aprendices"   
+
+        db_table = "aprendices"
+
 
 class FichasUsuarios(models.Model):
     id_ficha_usuario_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -234,5 +260,5 @@ class FichasUsuarios(models.Model):
     fecha_inscripcion = models.DateField()
 
     class Meta:
-        
-        db_table = "fichas_usuarios"    
+
+        db_table = "fichas_usuarios"

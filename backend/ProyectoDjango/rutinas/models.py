@@ -8,14 +8,16 @@
 
 from django.db import models
 
+
 # Create your models here.
 class EstadosRutina(models.Model):
     id_estado_rutina_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_estado_rutina = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'estados_rutina'
+
+        db_table = "estados_rutina"
+
 
 class NivelesActividadFisica(models.Model):
     id_nivel_actividad_fisica_pk = models.AutoField(
@@ -24,16 +26,18 @@ class NivelesActividadFisica(models.Model):
     nombre_nivel_actividad_fisica = models.CharField(max_length=100)
 
     class Meta:
-        
+
         db_table = "niveles_actividad_fisica"
+
 
 class NivelesRutina(models.Model):
     id_nivel_rutina_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_nivel_rutina = models.CharField(max_length=100)
 
     class Meta:
-        
+
         db_table = "niveles_rutina"
+
 
 class ObjetivosRutina(models.Model):
     id_objetivo_rutina_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -41,8 +45,9 @@ class ObjetivosRutina(models.Model):
     descripcion_objetivo = models.TextField(blank=True, null=True)
 
     class Meta:
-        
+
         db_table = "objetivos_rutina"
+
 
 class PartesCuerpo(models.Model):
     id_parte_cuerpo_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -50,8 +55,9 @@ class PartesCuerpo(models.Model):
     descripcion_parte_cuerpo = models.TextField(blank=True, null=True)
 
     class Meta:
-        
+
         db_table = "partes_cuerpo"
+
 
 class TiposParticipacionMusculo(models.Model):
     tipo_participacion_musculo = models.AutoField(
@@ -60,16 +66,18 @@ class TiposParticipacionMusculo(models.Model):
     nombre_tipo_participacion_musculo = models.CharField(max_length=100)
 
     class Meta:
-        
+
         db_table = "tipos_participacion_musculo"
+
 
 class ComplexionesFisicas(models.Model):
     id_complexion_fisica_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_complexion_fisica = models.CharField(max_length=100)
 
     class Meta:
-        
+
         db_table = "complexiones_fisicas"
+
 
 class Musculos(models.Model):
     id_musculo_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -80,8 +88,9 @@ class Musculos(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "musculos"
+
 
 class Ejercicios(models.Model):
     id_ejercicio_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -104,8 +113,9 @@ class Ejercicios(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "ejercicios"
+
 
 class EjerciciosMusculo(models.Model):
     id_ejercicio_musculo_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -122,8 +132,9 @@ class EjerciciosMusculo(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "ejercicios_musculo"
+
 
 class Rutinas(models.Model):
     id_rutina_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -139,8 +150,9 @@ class Rutinas(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "rutinas"
+
 
 class DetallesRutina(models.Model):
     id_detalle_rutina_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -154,6 +166,5 @@ class DetallesRutina(models.Model):
     )
 
     class Meta:
-        
-        db_table = "detalles_rutina"
 
+        db_table = "detalles_rutina"

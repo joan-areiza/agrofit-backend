@@ -4,7 +4,7 @@
 # source .venv/bin/activate
 
 from .connection import Connect_SQLite
-from ..utils.mysql_to_sqlite import mysql_to_sqlite
+from backend.app.shared.utils.mysql_to_sqlite import mysql_to_sqlite
 
 def init_db():
     # Conexion a la Base de datos

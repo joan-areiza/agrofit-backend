@@ -1,6 +1,7 @@
 # Importar modulo
-#import mysql.connector
+# import mysql.connector
 import sqlite3
+
 """
 # ========== MySQL ==========
 def Connect():
@@ -27,8 +28,7 @@ def Connect_SQLite():
     # Crear cursor
     cursor = connect.cursor()
     # Cerrar la conexiòn
-    #connect.close()
+    # connect.close()
 
     # Retornar los objetos requeridos
     return [connect, cursor]
-

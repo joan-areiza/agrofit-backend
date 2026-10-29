@@ -7,6 +7,8 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 
 from django.db import models
+from centros.models import CentrosFormacion
+
 
 # Create your models here.
 class Jornadas(models.Model):
@@ -15,16 +17,18 @@ class Jornadas(models.Model):
     estado_jornada = models.TextField()  # This field type is a guess.
 
     class Meta:
-        
-        db_table = 'jornadas'
+
+        db_table = "jornadas"
+
 
 class Modalidades(models.Model):
     id_modalidad_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_modalidad = models.CharField(max_length=100)
 
     class Meta:
-        
-        db_table = 'modalidades'
+
+        db_table = "modalidades"
+
 
 class NivelesFormacionPrograma(models.Model):
     id_niveles_formacion_programa_pk = models.AutoField(
@@ -33,16 +37,18 @@ class NivelesFormacionPrograma(models.Model):
     nombre_nivel_formacion_programa = models.CharField(max_length=100)
 
     class Meta:
-        
+
         db_table = "niveles_formacion_programa"
+
 
 class RequisitosPrograma(models.Model):
     id_requisito_programa_pk = models.AutoField(primary_key=True, blank=True, null=True)
     nombre_requisito_programa = models.CharField(max_length=100)
 
     class Meta:
-        
+
         db_table = "requisitos_programa"
+
 
 class ProgramasFormacion(models.Model):
     id_programa_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -52,10 +58,8 @@ class ProgramasFormacion(models.Model):
         "RequisitosPrograma", models.DO_NOTHING, db_column="id_requisito_programa_fk"
     )
     duracion_programa = models.IntegerField()
-    cod_centro_formacion_programa_fk = models.ForeignKey(
-        CentrosFormacion,
-        models.DO_NOTHING,
-        db_column="cod_centro_formacion_programa_fk",
+    id_centro_formacion_programa_fk = models.ForeignKey(
+        CentrosFormacion, models.DO_NOTHING, db_column="id_centro_formacion_programa_fk"
     )
     id_nivel_formacion_programa_fk = models.ForeignKey(
         NivelesFormacionPrograma,
@@ -65,8 +69,9 @@ class ProgramasFormacion(models.Model):
     estado_programa = models.TextField()  # This field type is a guess.
 
     class Meta:
-        
+
         db_table = "programas_formacion"
+
 
 class FichasFormacion(models.Model):
     id_ficha_formacion_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -91,5 +96,5 @@ class FichasFormacion(models.Model):
     )
 
     class Meta:
-        
+
         db_table = "fichas_formacion"

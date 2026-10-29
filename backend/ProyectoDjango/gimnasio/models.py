@@ -7,6 +7,8 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 
 from django.db import models
+from usuarios.models import Entrenadores
+
 
 # Create your models here.
 class TiposMaquina(models.Model):
@@ -14,21 +16,35 @@ class TiposMaquina(models.Model):
     nombre_tipo_maquina = models.CharField(max_length=100)
 
     class Meta:
-        
+
         db_table = "tipos_maquina"
+
+
+class EstadosMaquina(models.Model):
+    id_estado_maquina_pk = models.IntegerField()
+    nombre_estado_maquina = models.CharField(max_length=100)
+
+    class Meta:
+
+        db_table = "estados_maquina"
+
 
 class Maquinas(models.Model):
     id_maquina_pk = models.AutoField(primary_key=True, blank=True, null=True)
+    cod_inventario = models.CharField(max_length=6)
     nombre_maquina = models.CharField(max_length=100)
-    estado_maquina = models.TextField()  # This field type is a guess.
+    id_estado_maquina_fk = models.ForeignKey(
+        EstadosMaquina, models.DO_NOTHING, db_column="id_estado_maquina_fk"
+    )
     id_tipo_maquina_fk = models.ForeignKey(
         "TiposMaquina", models.DO_NOTHING, db_column="id_tipo_maquina_fk"
     )
     descripcion_maquina = models.TextField(blank=True, null=True)
 
     class Meta:
-        
+
         db_table = "maquinas"
+
 
 class Horarios(models.Model):
     id_horario_pk = models.AutoField(primary_key=True, blank=True, null=True)
@@ -44,5 +60,5 @@ class Horarios(models.Model):
     estado_horario = models.TextField()  # This field type is a guess.
 
     class Meta:
-        
+
         db_table = "horarios"
