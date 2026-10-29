@@ -6,7 +6,6 @@
 from .connection import Connect_SQLite
 from ..utils.mysql_to_sqlite import mysql_to_sqlite
 
-
 def init_db():
     # Conexion a la Base de datos
     # Obtener la conexión y el cursor
@@ -34,34 +33,34 @@ def init_db():
 		PRIMARY KEY (`id_region_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `sexos` (
+	CREATE TABLE IF NOT EXISTS `sexos` (
 		`cod_sexo_pk` char(6) NOT NULL,
 		`nombre_sexo` varchar(100) NOT NULL,
 		PRIMARY KEY (`cod_sexo_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `tipos_documento` (
+	CREATE TABLE IF NOT EXISTS `tipos_documento` (
 		`cod_tipo_documento_pk` char(6) NOT NULL,
 		`nombre_tipo_documento` varchar(100) NOT NULL,
 		PRIMARY KEY (`cod_tipo_documento_pk`) 
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `tipos_sangre` (
+	CREATE TABLE IF NOT EXISTS `tipos_sangre` (
 		`cod_tipo_sangre_pk` char(6) NOT NULL,
 		`nombre_tipo_sangre` varchar(100) NOT NULL,
 		PRIMARY KEY (`cod_tipo_sangre_pk`) 
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `estados_civil` (
+	CREATE TABLE IF NOT EXISTS `estados_civil` (
 		`id_estado_civil_pk` int(11) NOT NULL,
 		`nombre_estado_civil` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_estado_civil_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `roles` (
+	CREATE TABLE IF NOT EXISTS `roles` (
 		`id_rol_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_rol` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_rol_pk`)
@@ -69,7 +68,7 @@ def init_db():
 
 
 
-		CREATE TABLE IF NOT EXISTS `hospitales` (
+	CREATE TABLE IF NOT EXISTS `hospitales` (
 		`cod_hospital_pk` char(6) NOT NULL,
 		`nombre_hospital` varchar(100) NOT NULL,
 		`direccion_hospital` varchar(150) NOT NULL,
@@ -77,7 +76,7 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `eps` (
+	CREATE TABLE IF NOT EXISTS `eps` (
 		`cod_eps_pk` char(6) NOT NULL,
 		`nombre_eps` varchar(100) NOT NULL,
 		`telefono_eps` char(11) NOT NULL,
@@ -86,42 +85,42 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `niveles_administrador` (
+	CREATE TABLE IF NOT EXISTS `niveles_administrador` (
 		`id_nivel_administrador_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_nivel_administrador` varchar(100) NOT NULL DEFAULT '',
 		PRIMARY KEY (`id_nivel_administrador_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `especialidades_entrenador` (
+	CREATE TABLE IF NOT EXISTS `especialidades_entrenador` (
 		`id_especialidad_entrenador_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_especialidad_entrenador` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_especialidad_entrenador_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `estados_aprendiz` (
+	CREATE TABLE IF NOT EXISTS `estados_aprendiz` (
 		`id_estado_aprendiz_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_estado_aprendiz` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_estado_aprendiz_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `estados_funcionario` (
+	CREATE TABLE IF NOT EXISTS `estados_funcionario` (
 		`id_estado_funcionario_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_estado_funcionario` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_estado_funcionario_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `estados_rutina` (
+	CREATE TABLE IF NOT EXISTS `estados_rutina` (
 		`id_estado_rutina_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_estado_rutina` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_estado_rutina_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `jornadas` (
+	CREATE TABLE IF NOT EXISTS `jornadas` (
 		`id_jornada_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_jornada` varchar(100) NOT NULL,
 		`estado_jornada` tinyint(1) NOT NULL,
@@ -129,35 +128,35 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `modalidades` (
+	CREATE TABLE IF NOT EXISTS `modalidades` (
 		`id_modalidad_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_modalidad` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_modalidad_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `niveles_actividad_fisica` (
+	CREATE TABLE IF NOT EXISTS `niveles_actividad_fisica` (
 		`id_nivel_actividad_fisica_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_nivel_actividad_fisica` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_nivel_actividad_fisica_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `niveles_formacion_programa` (
+	CREATE TABLE IF NOT EXISTS `niveles_formacion_programa` (
 		`id_niveles_formacion_programa_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_nivel_formacion_programa` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_niveles_formacion_programa_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `niveles_rutina` (
+	CREATE TABLE IF NOT EXISTS `niveles_rutina` (
 		`id_nivel_rutina_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_nivel_rutina` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_nivel_rutina_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `objetivos_rutina` (
+	CREATE TABLE IF NOT EXISTS `objetivos_rutina` (
 		`id_objetivo_rutina_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_objetivo_rutina` varchar(150) NOT NULL,
 		`descripcion_objetivo` text DEFAULT NULL,
@@ -165,7 +164,7 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `partes_cuerpo` (
+	CREATE TABLE IF NOT EXISTS `partes_cuerpo` (
 		`id_parte_cuerpo_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_parte_cuerpo` varchar(60) NOT NULL,
 		`descripcion_parte_cuerpo` text DEFAULT NULL,
@@ -173,42 +172,42 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `requisitos_programa` (
+	CREATE TABLE IF NOT EXISTS `requisitos_programa` (
 		`id_requisito_programa_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_requisito_programa` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_requisito_programa_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `tipos_maquina` (
+	CREATE TABLE IF NOT EXISTS `tipos_maquina` (
 		`id_tipo_maquina_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_tipo_maquina` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_tipo_maquina_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `tipos_participacion_musculo` (
+	CREATE TABLE IF NOT EXISTS `tipos_participacion_musculo` (
 		`tipo_participacion_musculo` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_tipo_participacion_musculo` varchar(100) NOT NULL,
 		PRIMARY KEY (`tipo_participacion_musculo`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `antecedentes_medicos` (
+	CREATE TABLE IF NOT EXISTS `antecedentes_medicos` (
 		`id_antecedente_medico_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_antecedente_medico` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_antecedente_medico_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `complexiones_fisicas` (
+	CREATE TABLE IF NOT EXISTS `complexiones_fisicas` (
 		`id_complexion_fisica_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_complexion_fisica` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_complexion_fisica_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `departamentos` (
+	CREATE TABLE IF NOT EXISTS `departamentos` (
 		`cod_departamento_pk` char(6) NOT NULL,
 		`nombre_departamento` varchar(100) NOT NULL,
 		`id_region_departamento_fk` int(11) NOT NULL,
@@ -218,7 +217,7 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `municipios` (
+	CREATE TABLE IF NOT EXISTS `municipios` (
 		`cod_municipio_pk` char(6) NOT NULL,
 		`nombre_municipio` varchar(150) NOT NULL,
 		`cod_departamento_municipio_fk` char(6) NOT NULL,
@@ -228,39 +227,41 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `centros_formacion` (
+	CREATE TABLE IF NOT EXISTS `centros_formacion` (
+		`id_centro_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`cod_centro_pk` char(6) NOT NULL,
 		`nombre_centro` varchar(100) NOT NULL,
 		`direccion_centro` varchar(150) NOT NULL,
+		`dias_permitidos` int(11) NOT NULL,
 		`cod_municipio_centro_fk` char(6) NOT NULL,
-		PRIMARY KEY (`cod_centro_pk`),
+		PRIMARY KEY (`id_centro_pk`),
 		KEY `cod_municipio_centro_fk` (`cod_municipio_centro_fk`),
 		CONSTRAINT `cod_municipio_centro_fk` FOREIGN KEY (`cod_municipio_centro_fk`) REFERENCES `municipios` (`cod_municipio_pk`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `sedes` (
+	CREATE TABLE IF NOT EXISTS `sedes` (
 		`id_sede_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_sede` varchar(100) NOT NULL,
 		`direccion_sede` varchar(50) NOT NULL,
-		`cod_centro_sede_fk` char(6) NOT NULL,
+		`id_centro_sede_fk` int(11) NOT NULL,
 		PRIMARY KEY (`id_sede_pk`),
-		KEY `cod_centro_sede_fk` (`cod_centro_sede_fk`),
-		CONSTRAINT `cod_centro_sede_fk` FOREIGN KEY (`cod_centro_sede_fk`) REFERENCES `centros_formacion` (`cod_centro_pk`) ON UPDATE CASCADE
+		KEY `id_centro_sede_fk` (`id_centro_sede_fk`),
+		CONSTRAINT `id_centro_sede_fk` FOREIGN KEY (`id_centro_sede_fk`) REFERENCES `centros_formacion` (`id_centro_pk`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `dependencias_funcionario` (
+	CREATE TABLE IF NOT EXISTS `dependencias_funcionario` (
 		`id_dependencia_funcionario_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_dependencia_funcionario` varchar(100) NOT NULL,
-		`cod_centro_dependencia_fk` char(6) NOT NULL,
+		`id_centro_dependencia_fk` int(11) NOT NULL,
 		PRIMARY KEY (`id_dependencia_funcionario_pk`),
-		KEY `cod_centro_dependencia_fk` (`cod_centro_dependencia_fk`),
-		CONSTRAINT `cod_centro_dependencia_fk` FOREIGN KEY (`cod_centro_dependencia_fk`) REFERENCES `centros_formacion` (`cod_centro_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
+		KEY `id_centro_dependencia_fk` (`id_centro_dependencia_fk`),
+		CONSTRAINT `id_centro_dependencia_fk` FOREIGN KEY (`id_centro_dependencia_fk`) REFERENCES `centros_formacion` (`id_centro_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `usuarios` (
+	CREATE TABLE IF NOT EXISTS `usuarios` (
 		`id_usuario_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`numero_documento_usuario` varchar(11) NOT NULL,
 		`cod_tipo_documento_usuario_fk` char(6) NOT NULL,
@@ -306,14 +307,14 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `estados_contacto` (
+	CREATE TABLE IF NOT EXISTS `estados_contacto` (
 		`id_estado_contacto_pk` INT(11) NOT NULL AUTO_INCREMENT,
 		`nombre_estado` VARCHAR(50) NOT NULL,
 		PRIMARY KEY (`id_estado_contacto_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `mensajes_contacto` (
+	CREATE TABLE IF NOT EXISTS `mensajes_contacto` (
 		`id_mensaje_pk` INT(11) NOT NULL AUTO_INCREMENT,
 		`nombres_remitente` VARCHAR(150) NOT NULL,
 		`correo_remitente` VARCHAR(150) NOT NULL,
@@ -327,7 +328,7 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `entrenadores` (
+	CREATE TABLE IF NOT EXISTS `entrenadores` (
 		`id_entrenador_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_usuario_entrenador_fk` int(11) NOT NULL,
 		`id_especialidad_entrenador_fk` int(11) NOT NULL,
@@ -340,7 +341,7 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `administradores` (
+	CREATE TABLE IF NOT EXISTS `administradores` (
 		`id_administrador_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_usuario_administrador_fk` int(11) NOT NULL,
 		`id_nivel_acceso_administrador_fk` int(11) NOT NULL,
@@ -353,7 +354,7 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `funcionarios` (
+	CREATE TABLE IF NOT EXISTS `funcionarios` (
 		`id_funcionario_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_usuario_funcionario_fk` int(11) NOT NULL,
 		`id_dependencia_funcionario_fk` int(11) NOT NULL,
@@ -368,26 +369,25 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `programas_formacion` (
+	CREATE TABLE IF NOT EXISTS `programas_formacion` (
 		`id_programa_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`cod_programa_pk` char(6) NOT NULL,
 		`nombre_programa` varchar(200) NOT NULL,
 		`id_requisito_programa_fk` int(11) NOT NULL,
 		`duracion_programa` int(4) NOT NULL,
-		`cod_centro_formacion_programa_fk` char(6) NOT NULL,
+		`id_centro_formacion_programa_fk` int(11) NOT NULL,
 		`id_nivel_formacion_programa_fk` int(11) NOT NULL,
 		`estado_programa` tinyint(1) NOT NULL,
 		PRIMARY KEY (`id_programa_pk`),
 		KEY `id_requisito_programa_fk` (`id_requisito_programa_fk`),
 		KEY `id_nivel_formacion_programa_fk` (`id_nivel_formacion_programa_fk`),
-		KEY `cod_centro_formacion_programa_fk` (`cod_centro_formacion_programa_fk`),
-		CONSTRAINT `cod_centro_formacion_programa_fk` FOREIGN KEY (`cod_centro_formacion_programa_fk`) REFERENCES `centros_formacion` (`cod_centro_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
+		KEY `id_centro_formacion_programa_fk` (`id_centro_formacion_programa_fk`),
+		CONSTRAINT `id_centro_formacion_programa_fk` FOREIGN KEY (`id_centro_formacion_programa_fk`) REFERENCES `centros_formacion` (`id_centro_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
 		CONSTRAINT `id_nivel_formacion_programa_fk` FOREIGN KEY (`id_nivel_formacion_programa_fk`) REFERENCES `niveles_formacion_programa` (`id_niveles_formacion_programa_pk`) ON UPDATE CASCADE,
 		CONSTRAINT `id_requisito_programa_fk` FOREIGN KEY (`id_requisito_programa_fk`) REFERENCES `requisitos_programa` (`id_requisito_programa_pk`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-
-		CREATE TABLE IF NOT EXISTS `fichas_formacion` (
+	CREATE TABLE IF NOT EXISTS `fichas_formacion` (
 		`id_ficha_formacion_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`numero_ficha` varchar(7) NOT NULL,
 		`id_programa_ficha_fk` int(11) NOT NULL,
@@ -412,8 +412,7 @@ def init_db():
 		CONSTRAINT `id_sede_ficha_fk` FOREIGN KEY (`id_sede_ficha_fk`) REFERENCES `sedes` (`id_sede_pk`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-
-		CREATE TABLE IF NOT EXISTS `aprendices` (
+	CREATE TABLE IF NOT EXISTS `aprendices` (
 		`id_aprendiz_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_usuario_aprendiz_fk` int(11) NOT NULL,
         `id_estado_aprendiz_fk` int(11) NOT NULL,
@@ -424,8 +423,7 @@ def init_db():
 		CONSTRAINT `id_usuario_aprendiz_fk` FOREIGN KEY (`id_usuario_aprendiz_fk`) REFERENCES `usuarios` (`id_Usuario_PK`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-
-		CREATE TABLE IF NOT EXISTS `fichas_usuarios` (
+	CREATE TABLE IF NOT EXISTS `fichas_usuarios` (
 		`id_ficha_usuario_pk` INT(11) NOT NULL AUTO_INCREMENT,
 		`id_ficha_fk` INT(11) NOT NULL,
 		`id_usuario_ficha_fk` INT(11) NOT NULL,
@@ -436,21 +434,29 @@ def init_db():
 		CONSTRAINT `id_ficha_fk` FOREIGN KEY (`id_ficha_fk`) REFERENCES `fichas_formacion` (`id_ficha_formacion_pk`) ON UPDATE CASCADE ON DELETE NO ACTION,
 		CONSTRAINT `id_usuario_ficha_fk` FOREIGN KEY (`id_usuario_ficha_fk`) REFERENCES `usuarios` (`id_usuario_pk`) ON UPDATE CASCADE ON DELETE NO ACTION
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
-
-
-		CREATE TABLE IF NOT EXISTS `maquinas` (
+	
+	CREATE TABLE IF NOT EXISTS `estados_maquina` (
+		`id_estado_maquina_pk` int(11) NOT NULL,
+		`nombre_estado_maquina` varchar(100) NOT NULL,
+		PRIMARY KEY (`id_estado_maquina_pk`)
+	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
+	
+	CREATE TABLE IF NOT EXISTS `maquinas` (
 		`id_maquina_pk` int(11) NOT NULL AUTO_INCREMENT,
+		`cod_inventario` char(6) NOT NULL,
 		`nombre_maquina` varchar(100) NOT NULL,
-		`estado_maquina` tinyint(2) NOT NULL,
+		`id_estado_maquina_fk` int(11) NOT NULL,
 		`id_tipo_maquina_fk` int(11) NOT NULL,
 		`descripcion_maquina` text DEFAULT NULL,
 		PRIMARY KEY (`id_maquina_pk`),
 		KEY `id_tipo_maquina_fk` (`id_tipo_maquina_fk`),
-		CONSTRAINT `id_tipo_maquina_fk` FOREIGN KEY (`id_tipo_maquina_fk`) REFERENCES `tipos_maquina` (`id_tipo_maquina_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
+		KEY `id_estado_maquina_fk` (`id_estado_maquina_fk`),
+		CONSTRAINT `id_tipo_maquina_fk` FOREIGN KEY (`id_tipo_maquina_fk`) REFERENCES `tipos_maquina` (`id_tipo_maquina_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
+		CONSTRAINT `id_estado_maquina_fk` FOREIGN KEY (`id_estado_maquina_fk`) REFERENCES `estados_maquina` (`id_estado_maquina_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `musculos` (
+	CREATE TABLE IF NOT EXISTS `musculos` (
 		`id_musculo_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_musculo` varchar(80) NOT NULL,
 		`decripcion_musculo` text DEFAULT NULL,
@@ -461,7 +467,7 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `ejercicios` (
+	CREATE TABLE IF NOT EXISTS `ejercicios` (
 		`id_ejercicio_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_ejercicio` varchar(100) NOT NULL,
 		`repeticiones_ejercicio` int(11) NOT NULL,
@@ -478,7 +484,7 @@ def init_db():
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
-		CREATE TABLE IF NOT EXISTS `ejercicios_musculo` (
+	CREATE TABLE IF NOT EXISTS `ejercicios_musculo` (
 		`id_ejercicio_musculo_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_ejercicio_fk` int(11) NOT NULL,
 		`id_musculo_fk` int(11) NOT NULL,
@@ -492,7 +498,7 @@ def init_db():
 		CONSTRAINT `id_tipo_participacion_musculo_fk` FOREIGN KEY (`id_tipo_participacion_musculo_fk`) REFERENCES `tipos_participacion_musculo` (`tipo_participacion_musculo`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `rutinas` (
+	CREATE TABLE IF NOT EXISTS `rutinas` (
 		`id_rutina_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_rutina` varchar(100) NOT NULL,
 		`id_objetivo_rutina_fk` int(11) NOT NULL,
@@ -507,10 +513,11 @@ def init_db():
 		CONSTRAINT `id_objeti_rutina_fk` FOREIGN KEY (`id_objetivo_rutina_fk`) REFERENCES `objetivos_rutina` (`id_objetivo_rutina_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `detalles_rutina` (
+	CREATE TABLE IF NOT EXISTS `detalles_rutina` (
 		`id_detalle_rutina_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`series_rutina` int(2) NOT NULL,
 		`repeticiones_rutina` int(2) NOT NULL,
+		`descanso_segundos` int(11) NOT NULL,
 		`id_rutina_fk` int(11) NOT NULL,
 		`id_ejercicio_rutina_fk` int(11) NOT NULL,
 		PRIMARY KEY (`id_detalle_rutina_pk`),
@@ -520,7 +527,7 @@ def init_db():
 		CONSTRAINT `id_rutina_per_fk` FOREIGN KEY (`id_rutina_fk`) REFERENCES `rutinas` (`id_rutina_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `horarios` (
+	CREATE TABLE IF NOT EXISTS `horarios` (
 		`id_horario_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_jornada_horario_fk` int(11) NOT NULL,
 		`hora_inicio_horario` time NOT NULL,
@@ -535,24 +542,32 @@ def init_db():
 		CONSTRAINT `id_jornada_horario_fk` FOREIGN KEY (`id_jornada_horario_fk`) REFERENCES `jornadas` (`id_jornada_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `asignaciones_rutina_usuario` (
+	CREATE TABLE IF NOT EXISTS `estados_asignacion` (
+		`id_estado_asignacion_pk` int(11) NOT NULL,
+		`nombre_estado_asignacion` varchar(100) NOT NULL,
+		PRIMARY KEY (`id_estado_asignacion_pk`)
+	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
+	
+	CREATE TABLE IF NOT EXISTS `asignaciones_rutina_usuario` (
 		`id_asignacion_rutina_usuario_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_rutina_fk` int(11) NOT NULL,
 		`id_usuario_fk` int(11) NOT NULL,
 		`fecha_hora_inicio_asignacion_rutina` datetime NOT NULL,
 		`fecha_hora_fin_asignacion_rutina` datetime NOT NULL,
-		`estado_asignacion_rutina` tinyint(3) NOT NULL,
+		`id_estado_asignacion_rutina_fk` int(11) NOT NULL,
 		`id_entrenador_asigna_rutina_fk` int(11) NOT NULL,
 		PRIMARY KEY (`id_asignacion_rutina_usuario_pk`),
 		KEY `id_rutina_fk` (`id_rutina_fk`),
 		KEY `id_usuario_fk` (`id_usuario_fk`),
 		KEY `id_entrenador_asigna_rutina_fk` (`id_entrenador_asigna_rutina_fk`),
+		KEY `id_estado_asignacion_rutina_fk` (`id_estado_asignacion_rutina_fk`),
 		CONSTRAINT `id_entrenador_asigna_rutina_fk` FOREIGN KEY (`id_entrenador_asigna_rutina_fk`) REFERENCES `entrenadores` (`id_entrenador_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
 		CONSTRAINT `id_rutina_fk` FOREIGN KEY (`id_rutina_fk`) REFERENCES `rutinas` (`id_rutina_pk`) ON UPDATE CASCADE,
-		CONSTRAINT `id_usuario_fk` FOREIGN KEY (`id_usuario_fk`) REFERENCES `aprendices` (`id_aprendiz_pk`) ON UPDATE CASCADE
+		CONSTRAINT `id_usuario_fk` FOREIGN KEY (`id_usuario_fk`) REFERENCES `aprendices` (`id_aprendiz_pk`) ON UPDATE CASCADE,
+		CONSTRAINT `id_estado_asignacion_rutina_fk` FOREIGN KEY (`id_estado_asignacion_rutina_fk`) REFERENCES `estados_asignacion` (`id_estado_asignacion_pk`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `asistencias` (
+	CREATE TABLE IF NOT EXISTS `asistencias` (
 		`id_asistencia_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`id_aprendiz_asistencia_fk` int(11) NOT NULL,
 		`id_entrenador_asistencia_fk` int(11) NOT NULL,
@@ -568,7 +583,7 @@ def init_db():
 		CONSTRAINT `id_rutina_asistencia_fk` FOREIGN KEY (`id_rutina_asistencia_fk`) REFERENCES `rutinas` (`id_rutina_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `evaluaciones_fisicas` (
+	CREATE TABLE IF NOT EXISTS `evaluaciones_fisicas` (
 		`id_evaluacion_fisica_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`peso_evaluacion` decimal(5, 2) NOT NULL,
 		`id_nivel_actividad_fisica_evaluacion_fk` int(11) NOT NULL,
@@ -578,33 +593,50 @@ def init_db():
 		`grasa_muscular_evaluacion` varchar(50) NOT NULL,
 		`altura_evaluacion` decimal(4, 2) NOT NULL,
 		`observacion_evaluacion` text DEFAULT NULL,
+		`id_usuario_evaluacion_fk` int(11) NOT NULL,
 		`id_entrenador_encargado_evaluacion_fk` int(11) NOT NULL,
 		`id_complexion_fisica_evaluacion_fk` int(11) NOT NULL,
 		`presion_arterial` varchar(50) NOT NULL,
-		`id_usuario_evaluacion_fk` int(11) NOT NULL,
+		`imc_evaluacion` decimal(5, 2) NOT NULL,
+		`medida_cintura` decimal(5, 2) DEFAULT NULL,  
+		`medida_cadera` decimal(5, 2) DEFAULT NULL,
 		PRIMARY KEY (`id_evaluacion_fisica_pk`),
 		KEY `id_nivel_actividad_fisica_evaluacion_fk` (`id_nivel_actividad_fisica_evaluacion_fk`),
+		KEY `id_usuario_evaluacion_fk` (`id_usuario_evaluacion_fk`),
 		KEY `id_entrenador_encargado_evaluacion_fk` (`id_entrenador_encargado_evaluacion_fk`),
 		KEY `id_antecedente_medico_evaluacion_fk` (`id_antecedente_medico_evaluacion_fk`),
 		KEY `id_complexion_fisica_evaluacion_fk` (`id_complexion_fisica_evaluacion_fk`),
-		KEY `id_usuario_evaluacion_fk` (`id_usuario_evaluacion_fk`),
 		CONSTRAINT `id_antecedente_medico_evaluacion_fk` FOREIGN KEY (`id_antecedente_medico_evaluacion_fk`) REFERENCES `antecedentes_medicos` (`id_antecedente_medico_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
 		CONSTRAINT `id_complexion_fisica_evaluacion_fk` FOREIGN KEY (`id_complexion_fisica_evaluacion_fk`) REFERENCES `complexiones_fisicas` (`id_complexion_fisica_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
+		CONSTRAINT `id_usuario_evaluacion_fk` FOREIGN KEY (`id_usuario_evaluacion_fk`) REFERENCES `usuarios` (`id_usuario_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
 		CONSTRAINT `id_entrenador_encargado_evaluacion_fk` FOREIGN KEY (`id_entrenador_encargado_evaluacion_fk`) REFERENCES `entrenadores` (`id_entrenador_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
-		CONSTRAINT `id_nivel_actividad_fisica_evaluacion_fk` FOREIGN KEY (`id_nivel_actividad_fisica_evaluacion_fk`) REFERENCES `niveles_actividad_fisica` (`id_nivel_actividad_fisica_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
-		CONSTRAINT `id_usuario_evaluacion_fk` FOREIGN KEY (`id_usuario_evaluacion_fk`) REFERENCES `usuarios` (`id_usuario_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
+		CONSTRAINT `id_nivel_actividad_fisica_evaluacion_fk` FOREIGN KEY (`id_nivel_actividad_fisica_evaluacion_fk`) REFERENCES `niveles_actividad_fisica` (`id_nivel_actividad_fisica_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-		CREATE TABLE IF NOT EXISTS `seguimientos_progreso_usuario` (
+	CREATE TABLE IF NOT EXISTS `estados_seguimiento` (
+		`id_estado_seguimiento_pk` int(11) NOT NULL,
+		`nombre_estado_seguimiento` varchar(100) NOT NULL,
+		PRIMARY KEY (`id_estado_seguimiento_pk`)
+	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
+	
+	CREATE TABLE IF NOT EXISTS `seguimientos_progreso_usuario` (
 		`id_seguimiento_progreso_usuario_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`horas_ludicas` int(11) NOT NULL,
-		`id_usuario_progreso_fk` int(11) NOT NULL,
 		`rutinas_completadas` int(11) NOT NULL,
 		`fecha_registro_progreso` date NOT NULL,
+		`id_estado_seguimiento_fk` int(11) NOT NULL,
+		`id_evaluacion_fisica_fk` int(11) NOT NULL,
 		`observacion_progreso_usuario` text DEFAULT NULL,
+		`id_objetivo_actual_fk` int(11) NOT NULL,
+		`logros_avances` text DEFAULT NULL,
+		`aspectos_a_mejorar` text DEFAULT NULL,
 		PRIMARY KEY (`id_seguimiento_progreso_usuario_pk`),
-		KEY `id_usuario_progreso_fk` (`id_usuario_progreso_fk`),
-		CONSTRAINT `id_usuario_progreso_fk` FOREIGN KEY (`id_usuario_progreso_fk`) REFERENCES `usuarios` (`id_usuario_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
+		KEY `id_estado_seguimiento_fk` (`id_estado_seguimiento_fk`),
+		KEY `id_objetivo_actual_fk` (`id_objetivo_actual_fk`),
+		KEY `id_evaluacion_fisica_fk` (`id_evaluacion_fisica_fk`),
+		CONSTRAINT `id_estado_seguimiento_fk` FOREIGN KEY (`id_estado_seguimiento_fk`) REFERENCES `estados_seguimiento` (`id_estado_seguimiento_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
+		CONSTRAINT `id_objetivo_actual_fk` FOREIGN KEY (`id_objetivo_actual_fk`) REFERENCES `objetivos_rutina` (`id_objetivo_rutina_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
+		CONSTRAINT `id_evaluacion_fisica_fk` FOREIGN KEY (`id_evaluacion_fisica_fk`) REFERENCES `evaluaciones_fisicas` (`id_evaluacion_fisica_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 	INSERT OR IGNORE INTO `regiones` (`id_region_pk`, `nombre_region`) VALUES
@@ -1948,28 +1980,28 @@ def init_db():
 		('099624', 'Santa Rosalía', '000099'),
 		('099773', 'Cumaribo', '000099');
 
-	INSERT OR IGNORE INTO `centros_formacion` (`cod_centro_pk`, `nombre_centro`, `direccion_centro`, `cod_municipio_centro_fk`) VALUES
-		('910301', 'Centro Agropecuario', 'Vereda Las Guacas Km 7 vía al sur', '019001'),
-		('910302', 'Centro de Teleinformática y Producción Industrial', 'Calle 4 # 5-30', '019001'),
-		('910303', 'Centro de Comercio y Servicios', 'Carrera 9 # 25N-15', '019001'),
-		('910304', 'Centro de Biotecnología Industrial', 'Calle 15 # 8-20', '019698');
+	INSERT OR IGNORE INTO `centros_formacion` (`id_centro_pk`,`cod_centro_pk`, `nombre_centro`, `direccion_centro`, `cod_municipio_centro_fk`) VALUES
+		(1, '910301', 'Centro Agropecuario', 'Vereda Las Guacas Km 7 vía al sur', '019001'),
+		(2, '910302', 'Centro de Teleinformática y Producción Industrial', 'Calle 4 # 5-30', '019001'),
+		(3, '910303', 'Centro de Comercio y Servicios', 'Carrera 9 # 25N-15', '019001'),
+		(4, '910304', 'Centro de Biotecnología Industrial', 'Calle 15 # 8-20', '019698');
 
-	INSERT OR IGNORE INTO `sedes` (`id_sede_pk`, `nombre_sede`, `direccion_sede`, `cod_centro_sede_fk`) VALUES
-		(1, 'Sede Principal Agropecuario', 'Vereda Las Guacas', '910301'),
-		(2, 'Sede Urbanización', 'Calle 5 # 10-20', '910301'),
-		(3, 'Sede Teleinformática', 'Calle 4 # 5-30', '910302'),
-		(4, 'Sede Comercio', 'Carrera 9 # 25N-15', '910303'),
-		(5, 'Sede Biotecnología', 'Calle 15 # 8-20', '910304'),
-		(6, 'Sede Prácticas Campo', 'Finca Experimental SENA', '910301');
+	INSERT OR IGNORE INTO `sedes` (`id_sede_pk`, `nombre_sede`, `direccion_sede`, `id_centro_sede_fk`) VALUES
+		(1, 'Sede Principal Agropecuario', 'Vereda Las Guacas', 1),
+		(2, 'Sede Urbanización', 'Calle 5 # 10-20', 1),
+		(3, 'Sede Teleinformática', 'Calle 4 # 5-30', 2),
+		(4, 'Sede Comercio', 'Carrera 9 # 25N-15', 3),
+		(5, 'Sede Biotecnología', 'Calle 15 # 8-20', 4),
+		(6, 'Sede Prácticas Campo', 'Finca Experimental SENA', 1);
 
-	INSERT OR IGNORE INTO `dependencias_funcionario` (`id_dependencia_funcionario_pk`, `nombre_dependencia_funcionario`, `cod_centro_dependencia_fk`) VALUES
-		(1, 'Coordinación de Formación Profesional', '910301'),
-		(2, 'Coordinación Académica', '910301'),
-		(3, 'Gestión Administrativa', '910301'),
-		(4, 'Bienestar al Aprendiz', '910301'),
-		(5, 'Sistemas y Tecnologías de la Información', '910301'),
-		(6, 'Control Interno', '910301'),
-		(7, 'Coordinación Misional', '910301');
+	INSERT OR IGNORE INTO `dependencias_funcionario` (`id_dependencia_funcionario_pk`, `nombre_dependencia_funcionario`, `id_centro_dependencia_fk`) VALUES
+		(1, 'Coordinación de Formación Profesional', 1),
+		(2, 'Coordinación Académica', 1),
+		(3, 'Gestión Administrativa', 1),
+		(4, 'Bienestar al Aprendiz', 1),
+		(5, 'Sistemas y Tecnologías de la Información', 1),
+		(6, 'Control Interno', 1),
+		(7, 'Coordinación Misional', 1);
 
 	INSERT OR IGNORE INTO `usuarios` (
 		`id_usuario_pk`, `numero_documento_usuario`, `cod_tipo_documento_usuario_fk`, `correo_usuario`, 
@@ -1997,61 +2029,61 @@ def init_db():
 
 	INSERT OR IGNORE INTO `funcionarios` (`id_funcionario_pk`, `id_usuario_funcionario_fk`, `id_dependencia_funcionario_fk`, `id_estado_funcionario_fk`) VALUES (1, 3, 1, 1);
 
-	INSERT OR IGNORE INTO `programas_formacion` (`id_programa_pk`, `cod_programa_pk`, `nombre_programa`, `id_requisito_programa_fk`, `duracion_programa`, `cod_centro_formacion_programa_fk`, `id_nivel_formacion_programa_fk`, `estado_programa`) VALUES
-		(1, '112005', 'GESTIÓN DEL TALENTO HUMANO', 2, 18, '910301', 2, 1),
-		(2, '121523', 'COORDINACION DE PROCESOS LOGISTICOS', 2, 12, '910302', 2, 1),
-		(3, '123102', 'GESTION CONTABLE Y FINANCIERA', 4, 30, '910301', 2, 1),
-		(4, '124100', 'DESARROLLO PUBLICITARIO', 4, 24, '910301', 2, 1),
-		(5, '133500', 'NOMINA Y PRESTACIONES SOCIALES ', 2, 6, '910301', 2, 1),
-		(6, '134600', 'OPERACIONES DE COMERCIO EXTERIOR', 2, 30, '910302', 2, 1),
-		(7, '135303', 'ATENCION INTEGRAL AL CLIENTE', 4, 12, '910301', 2, 1),
-		(8, '135319', 'INFORMACION Y SERVICIO AL CLIENTE', 2, 24, '910304', 3, 1),
-		(9, '217320', 'DESARROLLO MULTIMEDIA Y WEB', 4, 18, '910302', 3, 1),
-		(10, '222114', 'ALISTAMIENTO DE LABORATORIOS DE MICROBIOLOGIA Y BIOTECNOLOGIA', 2, 24, '910301', 2, 1),
-		(11, '222203', 'GESTIÓN DE RECURSOS NATURALES', 3, 12, '910303', 3, 1),
-		(12, '222239', 'CONSERVACION DE RECURSOS NATURALES', 3, 6, '910302', 2, 1),
-		(13, '222301', 'MONITOREO AMBIENTAL', 3, 6, '910301', 2, 1),
-		(14, '222321', 'PROMOTORIA EN MANEJO AMBIENTAL', 3, 30, '910303', 2, 1),
-		(15, '226245', 'GESTION DE LA SEGURIDAD Y SALUD EN EL TRABAJO', 2, 24, '910303', 2, 1),
-		(16, '228118', 'ANALISIS Y DESARROLLO DE SOFTWARE', 4, 6, '910302', 2, 1),
-		(17, '233101', 'SISTEMAS', 3, 6, '910302', 3, 1),
-		(18, '233108', 'SISTEMAS TELEINFORMÁTICOS', 4, 18, '910302', 3, 1),
-		(19, '421149', 'PROMOTORIA SOCIOAMBIENTAL EN GRUPOS ETNICOS', 4, 12, '910303', 3, 1),
-		(20, '621102', 'GESTION COMERCIAL DE NEGOCIOS VERDES', 2, 12, '910301', 3, 1),
-		(21, '635604', 'SERVICIOS DE BARISMO', 2, 12, '910303', 3, 1),
-		(22, '722142', 'AGROBIOTECNOLOGÍA', 2, 24, '910301', 3, 1),
-		(23, '722143', 'PRODUCCIÓN AGROPECUARIA ECOLÓGICA', 3, 24, '910301', 3, 1),
-		(24, '722148', 'GESTION DE LA PRODUCCION AGRICOLA', 4, 18, '910301', 2, 1),
-		(25, '723105', 'GESTIÓN DE EMPRESAS AGROPECUARIAS', 2, 18, '910301', 3, 1),
-		(26, '723106', 'PRODUCCIÓN GANADERA', 3, 12, '910301', 3, 1),
-		(27, '723107', 'PRODUCCIÓN DE ESPECIES MENORES', 4, 6, '910303', 3, 1),
-		(28, '723133', 'MANEJO EMPRESARIAL DE LA FINCA', 4, 12, '910302', 3, 1),
-		(29, '723179', 'GESTION AGROEMPRESARIAL', 2, 24, '910301', 3, 1),
-		(30, '731324', 'LABORES SUBTERRANEAS', 3, 18, '910301', 3, 1),
-		(31, '732208', 'TECNICO EN OPERACIONES FORESTALES', 4, 30, '910301', 2, 1),
-		(32, '733174', 'CULTIVOS AGRICOLAS', 2, 18, '910301', 2, 1),
-		(33, '733192', 'ASEGURAMIENTO DE LA CALIDAD DEL CAFE EN LA FINCA', 2, 12, '910301', 3, 1),
-		(34, '733193', 'SISTEMAS AGROPECUARIOS ECOLOGICOS', 2, 18, '910301', 2, 1),
-		(35, '733290', 'PRODUCCION PECUARIA', 3, 18, '910301', 3, 1),
-		(36, '733402', 'PROYECTOS AGROPECUARIOS', 2, 12, '910301', 3, 1),
-		(37, '733403', 'MAYORDOMIA DE LA EMPRESA GANADERA SOSTENIBLE', 4, 18, '910301', 3, 1),
-		(38, '733410', 'PRODUCCION AGROPECUARIA', 2, 24, '910301', 3, 1),
-		(39, '733454', 'PRODUCCION ANIMAL', 3, 24, '910301', 3, 1),
-		(40, '761328', 'LABORES DE CAMPO EN CULTIVOS', 2, 18, '910301', 3, 1),
-		(41, '832235', 'INSTALACIONES ELECTRICAS PARA VIVIENDAS', 2, 30, '910302', 2, 1),
-		(42, '836136', 'CONSTRUCCION, MANTENIMIENTO Y REPARACION DE ESTRUCTURAS EN GUADUA', 4, 30, '910303', 2, 1),
-		(43, '836138', 'CONSTRUCCION DE EDIFICACIONES', 4, 24, '910304', 2, 1),
-		(44, '845300', 'OPERACION DE MAQUINARIA AGRICOLA', 3, 12, '910301', 3, 1),
-		(45, '921318', 'CONTROL DE CALIDAD DE ALIMENTOS', 4, 24, '910302', 3, 1),
-		(46, '921321', 'PROCESAMIENTO DE ALIMENTOS', 2, 6, '910301', 3, 1),
-		(47, '931404', 'BENEFICIO Y TRANSFORMACION DE ARCILLAS', 4, 12, '910302', 3, 1),
-		(48, '936101', 'PROCESAMIENTO DE FRUTAS Y HORTALIZAS', 4, 6, '910304', 2, 1),
-		(49, '936107', 'CHOCOLATERIA', 3, 30, '910304', 3, 1),
-		(50, '936113', 'ELABORACION DE PRODUCTOS ALIMENTICIOS', 4, 18, '910304', 2, 1),
-		(51, '961520', 'PROCESOS DE PANADERIA', 4, 6, '910301', 3, 1),
-		(52, '961521', 'PRODUCCION DE LECHES HIGIENIZADAS', 4, 30, '910301', 2, 1);
+	INSERT OR IGNORE INTO `programas_formacion` (`id_programa_pk`, `cod_programa_pk`, `nombre_programa`, `id_requisito_programa_fk`, `duracion_programa`, `id_centro_formacion_programa_fk`, `id_nivel_formacion_programa_fk`, `estado_programa`) VALUES
+		(1, '112005', 'GESTIÓN DEL TALENTO HUMANO', 2, 18, 1, 2, 1),
+		(2, '121523', 'COORDINACION DE PROCESOS LOGISTICOS', 2, 12, 2, 2, 1),
+		(3, '123102', 'GESTION CONTABLE Y FINANCIERA', 4, 30, 1, 2, 1),
+		(4, '124100', 'DESARROLLO PUBLICITARIO', 4, 24, 1, 2, 1),
+		(5, '133500', 'NOMINA Y PRESTACIONES SOCIALES ', 2, 6, 1, 2, 1),
+		(6, '134600', 'OPERACIONES DE COMERCIO EXTERIOR', 2, 30, 2, 2, 1),
+		(7, '135303', 'ATENCION INTEGRAL AL CLIENTE', 4, 12, 1, 2, 1),
+		(8, '135319', 'INFORMACION Y SERVICIO AL CLIENTE', 2, 24, 4, 3, 1),
+		(9, '217320', 'DESARROLLO MULTIMEDIA Y WEB', 4, 18, 2, 3, 1),
+		(10, '222114', 'ALISTAMIENTO DE LABORATORIOS DE MICROBIOLOGIA Y BIOTECNOLOGIA', 2, 24, 1, 2, 1),
+		(11, '222203', 'GESTIÓN DE RECURSOS NATURALES', 3, 12, 3, 3, 1),
+		(12, '222239', 'CONSERVACION DE RECURSOS NATURALES', 3, 6, 2, 2, 1),
+		(13, '222301', 'MONITOREO AMBIENTAL', 3, 6, 1, 2, 1),
+		(14, '222321', 'PROMOTORIA EN MANEJO AMBIENTAL', 3, 30, 3, 2, 1),
+		(15, '226245', 'GESTION DE LA SEGURIDAD Y SALUD EN EL TRABAJO', 2, 24, 3, 2, 1),
+		(16, '228118', 'ANALISIS Y DESARROLLO DE SOFTWARE', 4, 6, 2, 2, 1),
+		(17, '233101', 'SISTEMAS', 3, 6, 2, 3, 1),
+		(18, '233108', 'SISTEMAS TELEINFORMÁTICOS', 4, 18, 2, 3, 1),
+		(19, '421149', 'PROMOTORIA SOCIOAMBIENTAL EN GRUPOS ETNICOS', 4, 12, 3, 3, 1),
+		(20, '621102', 'GESTION COMERCIAL DE NEGOCIOS VERDES', 2, 12, 1, 3, 1),
+		(21, '635604', 'SERVICIOS DE BARISMO', 2, 12, 3, 3, 1),
+		(22, '722142', 'AGROBIOTECNOLOGÍA', 2, 24, 1, 3, 1),
+		(23, '722143', 'PRODUCCIÓN AGROPECUARIA ECOLÓGICA', 3, 24, 1, 3, 1),
+		(24, '722148', 'GESTION DE LA PRODUCCION AGRICOLA', 4, 18, 1, 2, 1),
+		(25, '723105', 'GESTIÓN DE EMPRESAS AGROPECUARIAS', 2, 18, 1, 3, 1),
+		(26, '723106', 'PRODUCCIÓN GANADERA', 3, 12, 1, 3, 1),
+		(27, '723107', 'PRODUCCIÓN DE ESPECIES MENORES', 4, 6, 3, 3, 1),
+		(28, '723133', 'MANEJO EMPRESARIAL DE LA FINCA', 4, 12, 2, 3, 1),
+		(29, '723179', 'GESTION AGROEMPRESARIAL', 2, 24, 1, 3, 1),
+		(30, '731324', 'LABORES SUBTERRANEAS', 3, 18, 1, 3, 1),
+		(31, '732208', 'TECNICO EN OPERACIONES FORESTALES', 4, 30, 1, 2, 1),
+		(32, '733174', 'CULTIVOS AGRICOLAS', 2, 18, 1, 2, 1),
+		(33, '733192', 'ASEGURAMIENTO DE LA CALIDAD DEL CAFE EN LA FINCA', 2, 12, 1, 3, 1),
+		(34, '733193', 'SISTEMAS AGROPECUARIOS ECOLOGICOS', 2, 18, 1, 2, 1),
+		(35, '733290', 'PRODUCCION PECUARIA', 3, 18, 1, 3, 1),
+		(36, '733402', 'PROYECTOS AGROPECUARIOS', 2, 12, 1, 3, 1),
+		(37, '733403', 'MAYORDOMIA DE LA EMPRESA GANADERA SOSTENIBLE', 4, 18, 1, 3, 1),
+		(38, '733410', 'PRODUCCION AGROPECUARIA', 2, 24, 1, 3, 1),
+		(39, '733454', 'PRODUCCION ANIMAL', 3, 24, 1, 3, 1),
+		(40, '761328', 'LABORES DE CAMPO EN CULTIVOS', 2, 18, 1, 3, 1),
+		(41, '832235', 'INSTALACIONES ELECTRICAS PARA VIVIENDAS', 2, 30, 2, 2, 1),
+		(42, '836136', 'CONSTRUCCION, MANTENIMIENTO Y REPARACION DE ESTRUCTURAS EN GUADUA', 4, 30, 3, 2, 1),
+		(43, '836138', 'CONSTRUCCION DE EDIFICACIONES', 4, 24, 4, 2, 1),
+		(44, '845300', 'OPERACION DE MAQUINARIA AGRICOLA', 3, 12, 1, 3, 1),
+		(45, '921318', 'CONTROL DE CALIDAD DE ALIMENTOS', 4, 24, 2, 3, 1),
+		(46, '921321', 'PROCESAMIENTO DE ALIMENTOS', 2, 6, 1, 3, 1),
+		(47, '931404', 'BENEFICIO Y TRANSFORMACION DE ARCILLAS', 4, 12, 2, 3, 1),
+		(48, '936101', 'PROCESAMIENTO DE FRUTAS Y HORTALIZAS', 4, 6, 4, 2, 1),
+		(49, '936107', 'CHOCOLATERIA', 3, 30, 4, 3, 1),
+		(50, '936113', 'ELABORACION DE PRODUCTOS ALIMENTICIOS', 4, 18, 4, 2, 1),
+		(51, '961520', 'PROCESOS DE PANADERIA', 4, 6, 1, 3, 1),
+		(52, '961521', 'PRODUCCION DE LECHES HIGIENIZADAS', 4, 30, 1, 2, 1);
 
-    INSERT INTO `fichas_formacion` (
+    INSERT OR IGNORE INTO `fichas_formacion` (
 		`id_ficha_formacion_pk`, `numero_ficha`, `id_programa_ficha_fk`, `id_jornada_ficha_fk`, 
 		`id_sede_ficha_fk`, `fecha_inicio_ficha`, `fecha_fin_ficha`, `estado_ficha`, 
 		`id_modalidad_ficha_fk`, `id_instructor_lider_ficha_fk`
@@ -2061,7 +2093,7 @@ def init_db():
 	(3, '2671236', 3, 1, 1, '2026-02-10', '2028-02-10', 1, 1, 1),
 	(4, '2671237', 4, 3, 3, '2026-03-01', '2027-09-01', 1, 2, 1);
         
-	INSERT INTO `fichas_usuarios` (
+	INSERT OR IGNORE INTO `fichas_usuarios` (
 		`id_ficha_usuario_pk`, `id_ficha_fk`, `id_usuario_ficha_fk`, `fecha_inscripcion`
 	) VALUES 
 	(1, 1, 1, '2026-02-10'),
@@ -2069,26 +2101,33 @@ def init_db():
 	(3, 3, 3, '2026-01-10'),
 	(4, 4, 1, '2026-02-12');
 
-	INSERT OR IGNORE INTO `aprendices` (`id_aprendiz_pk`, `id_usuario_aprendiz_fk`) VALUES (1, 1);   	            
-	INSERT OR IGNORE INTO `maquinas` (`id_maquina_pk`, `nombre_maquina`, `estado_maquina`, `id_tipo_maquina_fk`, `descripcion_maquina`) VALUES
-		(1, 'Cinta de correr', 1, 1, 'Cardio de bajo impacto'),
-		(2, 'Bicicleta estática', 1, 1, 'Cardio sentado'),
-		(3, 'Elíptica', 1, 1, 'Cardio de cuerpo completo'),
-		(4, 'Máquina de press de banca', 1, 3, 'Press de pecho guiado'),
-		(5, 'Máquina de jalón al pecho', 1, 3, 'Dorsales guiados'),
-		(6, 'Máquina de press militar', 1, 3, 'Hombros guiados'),
-		(7, 'Máquina de curl de bíceps', 1, 3, 'Bíceps aislado'),
-		(8, 'Máquina de extensión de tríceps', 1, 3, 'Tríceps aislado'),
-		(9, 'Prensa de piernas', 1, 3, 'Cuádriceps e isquios'),
-		(10, 'Máquina de extensión de cuádriceps', 1, 3, 'Cuádriceps aislado'),
-		(11, 'Máquina de curl femoral', 1, 3, 'Isquiotibiales aislados'),
-		(12, 'Máquina de gemelos', 1, 3, 'Pantorrillas'),
-		(13, 'Polea alta', 1, 2, 'Multipropósito'),
-		(14, 'Polea baja', 1, 2, 'Remo y curls'),
-		(15, 'Rack de sentadillas', 1, 2, 'Sentadillas y press militar libre'),
-		(16, 'Banco plano', 1, 2, 'Press de banca libre'),
-		(17, 'TRX', 1, 4, 'Entrenamiento en suspensión'),
-		(18, 'Kettlebell 16kg', 1, 4, 'Peso libre funcional');
+	INSERT OR IGNORE INTO `aprendices` (`id_aprendiz_pk`, `id_usuario_aprendiz_fk`) VALUES (1, 1);
+
+	INSERT OR IGNORE INTO `estados_maquina` (`id_estado_maquina_pk`, `nombre_estado_maquina`) VALUES 
+		(1, 'Disponible'),
+		(2, 'En Mantenimiento'),
+		(3, 'Fuera de Servicio'),
+		(4, 'Inactiva');
+        
+	INSERT OR IGNORE INTO `maquinas` (`id_maquina_pk`, `cod_inventario`, `nombre_maquina`, `id_estado_maquina_fk`, `id_tipo_maquina_fk`, `descripcion_maquina`) VALUES
+		(1, 'MQ-001', 'Cinta de correr', 1, 1, 'Cardio de bajo impacto'),
+		(2, 'MQ-002', 'Bicicleta estática', 1, 1, 'Cardio sentado'),
+		(3, 'MQ-003', 'Elíptica', 1, 1, 'Cardio de cuerpo completo'),
+		(4, 'MQ-004', 'Máquina de press de banca', 1, 3, 'Press de pecho guiado'),
+		(5, 'MQ-005', 'Máquina de jalón al pecho', 1, 3, 'Dorsales guiados'),
+		(6, 'MQ-006', 'Máquina de press militar', 1, 3, 'Hombros guiados'),
+		(7, 'MQ-007', 'Máquina de curl de bíceps', 1, 3, 'Bíceps aislado'),
+		(8, 'MQ-008', 'Máquina de extensión de tríceps', 1, 3, 'Tríceps aislado'),
+		(9, 'MQ-009', 'Prensa de piernas', 1, 3, 'Cuádriceps e isquios'),
+		(10, 'MQ-010', 'Máquina de extensión de cuádriceps', 1, 3, 'Cuádriceps aislado'),
+		(11, 'MQ-011', 'Máquina de curl femoral', 1, 3, 'Isquiotibiales aislados'),
+		(12, 'MQ-012', 'Máquina de gemelos', 1, 3, 'Pantorrillas'),
+		(13, 'MQ-013', 'Polea alta', 1, 2, 'Multipropósito'),
+		(14, 'MQ-014', 'Polea baja', 1, 2, 'Remo y curls'),
+		(15, 'MQ-015', 'Rack de sentadillas', 1, 2, 'Sentadillas y press militar libre'),
+		(16, 'MQ-016', 'Banco plano', 1, 2, 'Press de banca libre'),
+		(17, 'MQ-017', 'TRX', 1, 4, 'Entrenamiento en suspensión'),
+		(18, 'MQ-018', 'Kettlebell 16kg', 1, 4, 'Peso libre funcional');
 
 	INSERT OR IGNORE INTO `musculos` (`id_musculo_pk`, `nombre_musculo`, `decripcion_musculo`, `id_parte_cuerpo_musculo_fk`) VALUES
 		(1, 'Pectoral mayor', 'Músculo principal del pecho', 7),
@@ -2165,6 +2204,17 @@ def init_db():
 		(33, 19, 9, 2),
 		(34, 20, 2, 1);
         
+    INSERT OR IGNORE INTO `estados_asignacion` (`id_estado_asignacion_pk`, `nombre_estado_asignacion`) VALUES 
+		(1, 'Asignada'),
+		(2, 'Pendiente'),
+		(3, 'Completada'),
+		(4, 'Cancelada');
+        
+    INSERT OR IGNORE INTO `estados_seguimiento` (`id_estado_seguimiento_pk`, `nombre_estado_seguimiento`) VALUES 
+		(1, 'Activo'),
+		(2, 'En Pausa'),
+		(3, 'Finalizado'),
+		(4, 'Cancelado');
 	"""
 
     # Mostrar las tablas creadas en la base de datos
@@ -2180,9 +2230,10 @@ def init_db():
     # Cerrar la conexión
     database.close()
     # Cerrar el cursor
-    #cursor.close()
+    # cursor.close()
 
-#print("✓ Base de datos creada, tablas generadas y registros insertados con éxito.")
+
+# print("✓ Base de datos creada, tablas generadas y registros insertados con éxito.")
 
 if __name__ == "__main__":
     init_db()
