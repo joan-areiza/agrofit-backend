@@ -1,9 +1,9 @@
-from app.cli.menus.menu import show_menu
+from cli.menus.menu import show_menu
 
 # Componentes
-from app.shared.components.loading import loading, typewriter
-from app.shared.components.clear import clear
-from app.shared.database.schema import init_db
+from core.components.loading import loading, typewriter
+from core.components.clear import clear
+from core.database.schema import init_db
 
 # Crear estructura de BD en backend/data/agrofit.db
 init_db()

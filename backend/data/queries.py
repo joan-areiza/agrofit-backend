@@ -1,5 +1,5 @@
-from app.shared.utils.format_text import format_text
-from app.shared.database.connection import Connect_SQLite  # Importa la función de conexión
+from core.utils.format_text import format_text
+from core.database.connection import Connect_SQLite  # Importa la función de conexión
 
 database, cursor = Connect_SQLite()
 
