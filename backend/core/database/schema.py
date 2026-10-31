@@ -66,15 +66,12 @@ def init_db():
 		PRIMARY KEY (`id_rol_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-
-
 	CREATE TABLE IF NOT EXISTS `hospitales` (
 		`cod_hospital_pk` char(6) NOT NULL,
 		`nombre_hospital` varchar(100) NOT NULL,
 		`direccion_hospital` varchar(150) NOT NULL,
 		PRIMARY KEY (`cod_hospital_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
-
 
 	CREATE TABLE IF NOT EXISTS `eps` (
 		`cod_eps_pk` char(6) NOT NULL,
@@ -84,13 +81,11 @@ def init_db():
 		PRIMARY KEY (`cod_eps_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
-
 	CREATE TABLE IF NOT EXISTS `niveles_administrador` (
 		`id_nivel_administrador_pk` int(11) NOT NULL AUTO_INCREMENT,
-		`nombre_nivel_administrador` varchar(100) NOT NULL DEFAULT '',
+		`nombre_nivel_administrador` varchar(100) NOT NULL,
 		PRIMARY KEY (`id_nivel_administrador_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
-
 
 	CREATE TABLE IF NOT EXISTS `especialidades_entrenador` (
 		`id_especialidad_entrenador_pk` int(11) NOT NULL AUTO_INCREMENT,
@@ -187,9 +182,9 @@ def init_db():
 
 
 	CREATE TABLE IF NOT EXISTS `tipos_participacion_musculo` (
-		`tipo_participacion_musculo` int(11) NOT NULL AUTO_INCREMENT,
+		`id_tipo_participacion_musculo_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_tipo_participacion_musculo` varchar(100) NOT NULL,
-		PRIMARY KEY (`tipo_participacion_musculo`)
+		PRIMARY KEY (`id_tipo_participacion_musculo_pk`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
@@ -232,9 +227,10 @@ def init_db():
 		`cod_centro` char(6) NOT NULL,
 		`nombre_centro` varchar(100) NOT NULL,
 		`direccion_centro` varchar(150) NOT NULL,
-		`dias_permitidos` int(11) NOT NULL,
+		`dias_permitidos` int(2) NOT NULL,
 		`cod_municipio_centro_fk` char(6) NOT NULL,
 		PRIMARY KEY (`id_centro_pk`),
+        UNIQUE KEY `cod_centro` (`cod_centro`),
 		KEY `cod_municipio_centro_fk` (`cod_municipio_centro_fk`),
 		CONSTRAINT `cod_municipio_centro_fk` FOREIGN KEY (`cod_municipio_centro_fk`) REFERENCES `municipios` (`cod_municipio_pk`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
@@ -279,13 +275,13 @@ def init_db():
 		`cod_municipio_usuario_fk` char(6) NOT NULL,
 		`direccion_usuario` varchar(150) NOT NULL,
 		`foto_usuario` blob DEFAULT NULL,
-		`fecha_registro_usuario` date NOT NULL,
+		`fecha_registro_usuario` datetime NOT NULL,
 		`estado_usuario` tinyint(1) NOT NULL,
 		`id_rol_usuario_fk` int(11) NOT NULL,
-		`id_hospital_usuario_fk` char(6) NOT NULL,
-		`id_eps_usuario_fk` char(6) NOT NULL,
+		`cod_hospital_usuario_fk` char(6) NOT NULL,
+		`cod_eps_usuario_fk` char(6) NOT NULL,
 		PRIMARY KEY (`id_usuario_pk`, `numero_documento_usuario`),
-		UNIQUE KEY `correo_Usuario` (`correo_usuario`),
+		UNIQUE KEY `correo_usuario` (`correo_usuario`),
 		KEY `cod_tipo_documento_usuario_fk` (`cod_tipo_documento_usuario_fk`),
 		KEY `cod_sexo_usuario_fk` (`cod_sexo_usuario_fk`),
 		KEY `cod_tipo_sangre_usuario_fk` (`cod_tipo_sangre_usuario_fk`),
@@ -293,16 +289,16 @@ def init_db():
 		KEY `cod_departamento_usuario_fk` (`cod_departamento_usuario_fk`),
 		KEY `cod_municipio_usuario_fk` (`cod_municipio_usuario_fk`),
 		KEY `id_rol_usuario_fk` (`id_rol_usuario_fk`),
-		KEY `id_hospital_usuario_fk` (`id_hospital_usuario_fk`),
-		KEY `id_eps_usuario_fk` (`id_eps_usuario_fk`),
+		KEY `cod_hospital_usuario_fk` (`cod_hospital_usuario_fk`),
+		KEY `cod_eps_usuario_fk` (`cod_eps_usuario_fk`),
 		CONSTRAINT `cod_departamento_usuario_fk` FOREIGN KEY (`cod_departamento_usuario_fk`) REFERENCES `departamentos` (`cod_departamento_pk`) ON UPDATE CASCADE,
 		CONSTRAINT `cod_municipio_usuario_fk` FOREIGN KEY (`cod_municipio_usuario_fk`) REFERENCES `municipios` (`cod_municipio_pk`) ON UPDATE CASCADE,
 		CONSTRAINT `cod_sexo_usuario_fk` FOREIGN KEY (`cod_sexo_usuario_fk`) REFERENCES `sexos` (`cod_sexo_pk`) ON UPDATE CASCADE,
 		CONSTRAINT `cod_tipo_documento_usuario_fk` FOREIGN KEY (`cod_tipo_documento_usuario_fk`) REFERENCES `tipos_documento` (`cod_tipo_documento_pk`) ON UPDATE CASCADE,
 		CONSTRAINT `cod_tipo_sangre_usuario_fk` FOREIGN KEY (`cod_tipo_sangre_usuario_fk`) REFERENCES `tipos_sangre` (`cod_tipo_sangre_pk`) ON UPDATE CASCADE,
-		CONSTRAINT `id_eps_usuario_fk` FOREIGN KEY (`id_eps_usuario_fk`) REFERENCES `eps` (`cod_eps_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
+		CONSTRAINT `cod_eps_usuario_fk` FOREIGN KEY (`cod_eps_usuario_fk`) REFERENCES `eps` (`cod_eps_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
 		CONSTRAINT `id_estado_civil_usuario_fk` FOREIGN KEY (`id_estado_civil_usuario_fk`) REFERENCES `estados_civil` (`id_estado_civil_pk`) ON UPDATE CASCADE,
-		CONSTRAINT `id_hospital_usuario_fk` FOREIGN KEY (`id_hospital_usuario_fk`) REFERENCES `hospitales` (`cod_hospital_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
+		CONSTRAINT `cod_hospital_usuario_fk` FOREIGN KEY (`cod_hospital_usuario_fk`) REFERENCES `hospitales` (`cod_hospital_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
 		CONSTRAINT `id_rol_usuario_fk` FOREIGN KEY (`id_rol_usuario_fk`) REFERENCES `roles` (`id_rol_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
@@ -350,7 +346,7 @@ def init_db():
 		KEY `id_usuario_administrador_fk` (`id_usuario_administrador_fk`),
 		KEY `id_nivel_acceso_administrador_pk` (`id_nivel_acceso_administrador_fk`),
 		CONSTRAINT `id_nivel_acceso_administrador_pk` FOREIGN KEY (`id_nivel_acceso_administrador_fk`) REFERENCES `niveles_administrador` (`id_nivel_administrador_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
-		CONSTRAINT `id_usuario_administrador_fk` FOREIGN KEY (`id_usuario_administrador_fk`) REFERENCES `usuarios` (`id_usuario_PK`) ON UPDATE CASCADE
+		CONSTRAINT `id_usuario_administrador_fk` FOREIGN KEY (`id_usuario_administrador_fk`) REFERENCES `usuarios` (`id_usuario_pk`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 
@@ -379,6 +375,7 @@ def init_db():
 		`id_nivel_formacion_programa_fk` int(11) NOT NULL,
 		`estado_programa` tinyint(1) NOT NULL,
 		PRIMARY KEY (`id_programa_pk`),
+        UNIQUE KEY `cod_programa` (`cod_programa`),
 		KEY `id_requisito_programa_fk` (`id_requisito_programa_fk`),
 		KEY `id_nivel_formacion_programa_fk` (`id_nivel_formacion_programa_fk`),
 		KEY `id_centro_formacion_programa_fk` (`id_centro_formacion_programa_fk`),
@@ -420,7 +417,7 @@ def init_db():
 		KEY `id_usuario_aprendiz_fk` (`id_usuario_aprendiz_fk`),
         KEY `id_estado_aprendiz_fk` (`id_estado_aprendiz_fk`),
 		CONSTRAINT `id_estado_aprendiz_fk` FOREIGN KEY (`id_estado_aprendiz_fk`) REFERENCES `estados_aprendiz` (`id_estado_aprendiz_pk`) ON UPDATE CASCADE,
-		CONSTRAINT `id_usuario_aprendiz_fk` FOREIGN KEY (`id_usuario_aprendiz_fk`) REFERENCES `usuarios` (`id_Usuario_PK`) ON UPDATE CASCADE
+		CONSTRAINT `id_usuario_aprendiz_fk` FOREIGN KEY (`id_usuario_aprendiz_fk`) REFERENCES `usuarios` (`id_Usuario_pk`) ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 	CREATE TABLE IF NOT EXISTS `fichas_usuarios` (
@@ -449,6 +446,7 @@ def init_db():
 		`id_tipo_maquina_fk` int(11) NOT NULL,
 		`descripcion_maquina` text DEFAULT NULL,
 		PRIMARY KEY (`id_maquina_pk`),
+        UNIQUE KEY `cod_inventario` (`cod_inventario`),
 		KEY `id_tipo_maquina_fk` (`id_tipo_maquina_fk`),
 		KEY `id_estado_maquina_fk` (`id_estado_maquina_fk`),
 		CONSTRAINT `id_tipo_maquina_fk` FOREIGN KEY (`id_tipo_maquina_fk`) REFERENCES `tipos_maquina` (`id_tipo_maquina_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -470,11 +468,9 @@ def init_db():
 	CREATE TABLE IF NOT EXISTS `ejercicios` (
 		`id_ejercicio_pk` int(11) NOT NULL AUTO_INCREMENT,
 		`nombre_ejercicio` varchar(100) NOT NULL,
-		`repeticiones_ejercicio` int(11) NOT NULL,
 		`descripcion_ejercicio` text DEFAULT NULL,
 		`url_video_demo_ejercicio` varchar(150) NOT NULL,
 		`id_maquina_ejercicio_fk` int(11) DEFAULT NULL,
-		`carga_ejercicio` decimal(3, 2) NOT NULL,
 		`id_musculo_ejercicio_fk` int(11) NOT NULL,
 		PRIMARY KEY (`id_ejercicio_pk`),
 		KEY `id_maquina_ejercicio_fk` (`id_maquina_ejercicio_fk`),
@@ -495,7 +491,7 @@ def init_db():
 		KEY `id_tipo_participacion_musculo_fk` (`id_tipo_participacion_musculo_fk`),
 		CONSTRAINT `id_ejercicio_fk` FOREIGN KEY (`id_ejercicio_fk`) REFERENCES `ejercicios` (`id_ejercicio_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
 		CONSTRAINT `id_musculo_fk` FOREIGN KEY (`id_musculo_fk`) REFERENCES `musculos` (`id_musculo_pk`) ON DELETE NO ACTION ON UPDATE CASCADE,
-		CONSTRAINT `id_tipo_participacion_musculo_fk` FOREIGN KEY (`id_tipo_participacion_musculo_fk`) REFERENCES `tipos_participacion_musculo` (`tipo_participacion_musculo`) ON DELETE NO ACTION ON UPDATE CASCADE
+		CONSTRAINT `id_tipo_participacion_musculo_fk` FOREIGN KEY (`id_tipo_participacion_musculo_fk`) REFERENCES `tipos_participacion_musculo` (`id_tipo_participacion_musculo_pk`) ON DELETE NO ACTION ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish2_ci;
 
 	CREATE TABLE IF NOT EXISTS `rutinas` (
@@ -515,11 +511,12 @@ def init_db():
 
 	CREATE TABLE IF NOT EXISTS `detalles_rutina` (
 		`id_detalle_rutina_pk` int(11) NOT NULL AUTO_INCREMENT,
+        `id_rutina_fk` int(11) NOT NULL,
+		`id_ejercicio_rutina_fk` int(11) NOT NULL,
 		`series_rutina` int(2) NOT NULL,
 		`repeticiones_rutina` int(2) NOT NULL,
-		`descanso_segundos` int(11) NOT NULL,
-		`id_rutina_fk` int(11) NOT NULL,
-		`id_ejercicio_rutina_fk` int(11) NOT NULL,
+        `carga_rutina` decimal(5, 2) DEFAULT NULL,
+		`descanso_segundos` int(3) NOT NULL,
 		PRIMARY KEY (`id_detalle_rutina_pk`),
 		KEY `id_rutina_per_fk` (`id_rutina_fk`),
 		KEY `id_ejercicio_rutina_fk` (`id_ejercicio_rutina_fk`),
@@ -572,7 +569,7 @@ def init_db():
 		`id_aprendiz_asistencia_fk` int(11) NOT NULL,
 		`id_entrenador_asistencia_fk` int(11) NOT NULL,
 		`id_rutina_asistencia_fk` int(11) NOT NULL,
-		`fecha_asistencia` date NOT NULL,
+		`fecha_asistencia` datetime NOT NULL,
 		`estado_asistencia` tinyint(1) NOT NULL,
 		PRIMARY KEY (`id_asistencia_pk`),
 		KEY `id_aprendiz_asistencia_fk` (`id_aprendiz_asistencia_fk`),
@@ -588,18 +585,19 @@ def init_db():
 		`peso_evaluacion` decimal(5, 2) NOT NULL,
 		`id_nivel_actividad_fisica_evaluacion_fk` int(11) NOT NULL,
 		`id_antecedente_medico_evaluacion_fk` int(11) NOT NULL,
-		`fecha_evaluacion` date NOT NULL,
-		`grasa_corporal_evaluacion` varchar(50) NOT NULL,
-		`grasa_muscular_evaluacion` varchar(50) NOT NULL,
-		`altura_evaluacion` decimal(4, 2) NOT NULL,
+		`fecha_evaluacion` datetime NOT NULL,
+		`grasa_corporal_evaluacion` decimal(4, 2) NOT NULL,
+		`grasa_muscular_evaluacion` decimal(5, 2) NOT NULL,
+		`altura_evaluacion` decimal(3, 2) NOT NULL,
 		`observacion_evaluacion` text DEFAULT NULL,
 		`id_usuario_evaluacion_fk` int(11) NOT NULL,
 		`id_entrenador_encargado_evaluacion_fk` int(11) NOT NULL,
 		`id_complexion_fisica_evaluacion_fk` int(11) NOT NULL,
-		`presion_arterial` varchar(50) NOT NULL,
-		`imc_evaluacion` decimal(5, 2) NOT NULL,
-		`medida_cintura` decimal(5, 2) DEFAULT NULL,  
-		`medida_cadera` decimal(5, 2) DEFAULT NULL,
+		`presion_sistolica` SMALLINT NOT NULL,
+        `presion_diastolica` SMALLINT NOT NULL,
+		`imc_evaluacion` decimal(4, 2) NOT NULL,
+		`medida_cintura` decimal(5, 2) NOT NULL,  
+		`medida_cadera` decimal(5, 2) NOT NULL,
 		PRIMARY KEY (`id_evaluacion_fisica_pk`),
 		KEY `id_nivel_actividad_fisica_evaluacion_fk` (`id_nivel_actividad_fisica_evaluacion_fk`),
 		KEY `id_usuario_evaluacion_fk` (`id_usuario_evaluacion_fk`),
@@ -621,9 +619,9 @@ def init_db():
 	
 	CREATE TABLE IF NOT EXISTS `seguimientos_progreso_usuario` (
 		`id_seguimiento_progreso_usuario_pk` int(11) NOT NULL AUTO_INCREMENT,
-		`horas_ludicas` int(11) NOT NULL,
-		`rutinas_completadas` int(11) NOT NULL,
-		`fecha_registro_progreso` date NOT NULL,
+		`horas_ludicas` int(2) NOT NULL,
+		`rutinas_completadas` int(3) NOT NULL,
+		`fecha_registro_progreso` datetime NOT NULL,
 		`id_estado_seguimiento_fk` int(11) NOT NULL,
 		`id_evaluacion_fisica_fk` int(11) NOT NULL,
 		`observacion_progreso_usuario` text DEFAULT NULL,
@@ -802,7 +800,7 @@ def init_db():
 		(3, 'Máquina guiada'),
 		(4, 'Funcional');
 
-	INSERT OR IGNORE INTO `tipos_participacion_musculo` (`tipo_participacion_musculo`, `nombre_tipo_participacion_musculo`) VALUES
+	INSERT OR IGNORE INTO `tipos_participacion_musculo` (`id_tipo_participacion_musculo_pk`, `nombre_tipo_participacion_musculo`) VALUES
 		(1, 'Principal'),
 		(2, 'Secundario'),
 		(3, 'Estabilizador');
@@ -2009,7 +2007,7 @@ def init_db():
 		`apellidos_usuario`, `cod_sexo_usuario_fk`, `cod_tipo_sangre_usuario_fk`, `fecha_nacimiento_usuario`, 
 		`id_estado_civil_usuario_fk`, `cod_departamento_usuario_fk`, `cod_municipio_usuario_fk`, `direccion_usuario`, 
 		`foto_usuario`, `fecha_registro_usuario`, `estado_usuario`, `id_rol_usuario_fk`, 
-		`id_hospital_usuario_fk`, `id_eps_usuario_fk`
+		`cod_hospital_usuario_fk`, `cod_eps_usuario_fk`
 	) VALUES 
 	(1, '1061987654', 'TI', 'santiago.gomez@soy.sena.edu.co', '3124567890', '3159876543', '781f7e88d2ae418f37d1a19436875f75d082b8b6a41be74e02b6ccf4e5b04c16', 'Santiago', 'Gómez López', 'M', 'O+', '2009-05-14', 1, '000019', '019001', 'Calle 5 # 10-25 Barrio Centro', NULL, '2026-02-10', 1, 1, 'HOS001', 'EPS001'),
 	(2, '1061234567', 'CC', 'carlos.mendoza@sena.edu.co', '3101234567', '3117654321', '781f7e88d2ae418f37d1a19436875f75d082b8b6a41be74e02b6ccf4e5b04c16', 'Carlos Alberto', 'Mendoza Rodríguez', 'M', 'A+', '1995-11-20', 2, '000019', '019001', 'Carrera 9 # 18N-42 Barrio Valencia', NULL, '2026-01-15', 1, 2, 'HOS002', 'EPS002'),
@@ -2145,28 +2143,28 @@ def init_db():
 		(13, 'Erector espinal', 'Músculos de la zona lumbar', 6),
 		(14, 'Serrato anterior', 'Músculo lateral del torso', 1);
 
-	INSERT OR IGNORE INTO `ejercicios` (`id_ejercicio_pk`, `nombre_ejercicio`, `repeticiones_ejercicio`, `descripcion_ejercicio`, `url_video_demo_ejercicio`, `id_maquina_ejercicio_fk`, `carga_ejercicio`, `id_musculo_ejercicio_fk`) VALUES
-		(1, 'Press de banca', 10, 'Press horizontal con barra', 'https://youtube.com/pressbanca', 16, 0.80, 1),
-		(2, 'Jalón al pecho', 12, 'Tirón vertical en polea', 'https://youtube.com/jalon', 5, 0.70, 2),
-		(3, 'Press militar', 10, 'Press vertical de hombros', 'https://youtube.com/pressmilitar', 6, 0.60, 3),
-		(4, 'Curl de bíceps con barra', 12, 'Flexión de codo con barra', 'https://youtube.com/curl', 14, 0.40, 4),
-		(5, 'Extensión de tríceps en polea', 12, 'Extensión de codo en polea alta', 'https://youtube.com/triceps', 13, 0.35, 5),
-		(6, 'Sentadilla libre', 8, 'Sentadilla con barra en rack', 'https://youtube.com/sentadilla', 15, 1.00, 7),
-		(7, 'Prensa de piernas', 12, 'Empuje de piernas en máquina', 'https://youtube.com/prensa', 9, 1.20, 7),
-		(8, 'Extensión de cuádriceps', 15, 'Extensión aislada de rodilla', 'https://youtube.com/extensioncuad', 10, 0.50, 7),
-		(9, 'Curl femoral', 12, 'Flexión de rodilla en máquina', 'https://youtube.com/curlfer', 11, 0.45, 8),
-		(10, 'Peso muerto rumano', 8, 'Peso muerto con énfasis en isquios', 'https://youtube.com/pesomuerto', 15, 0.90, 8),
-		(11, 'Elevación de gemelos', 15, 'Elevación de talones', 'https://youtube.com/gemelos', 12, 0.60, 10),
-		(12, 'Crunch abdominal', 20, 'Flexión de tronco', 'https://youtube.com/crunch', NULL, 0.00, 11),
-		(13, 'Plancha frontal', 1, 'Isométrico de core', 'https://youtube.com/plancha', NULL, 0.00, 11),
-		(14, 'Remo con barra', 10, 'Tirón horizontal de espalda', 'https://youtube.com/remo', 14, 0.75, 2),
-		(15, 'Face pull', 15, 'Tirón a la cara para deltoides posteriores', 'https://youtube.com/facepull', 13, 0.30, 3),
-		(16, 'Fondos en paralelas', 10, 'Extensión de tríceps y pecho', 'https://youtube.com/fondos', NULL, 0.00, 5),
-		(17, 'Dominadas', 8, 'Tirón vertical con peso corporal', 'https://youtube.com/dominadas', NULL, 0.00, 2),
-		(18, 'Hip thrust', 10, 'Empuje de cadera', 'https://youtube.com/hipthrust', 16, 0.80, 9),
-		(19, 'Zancadas', 12, 'Zancadas caminando', 'https://youtube.com/zancadas', NULL, 0.00, 7),
-		(20, 'Remo invertido TRX', 12, 'Remo en suspensión', 'https://youtube.com/trxremo', 17, 0.00, 2),
-		(21, 'Swing con kettlebell', 15, 'Balanceo de kettlebell', 'https://youtube.com/swing', 18, 0.50, 9);
+	INSERT INTO `ejercicios` (`id_ejercicio_pk`, `nombre_ejercicio`, `descripcion_ejercicio`, `url_video_demo_ejercicio`, `id_maquina_ejercicio_fk`, `id_musculo_ejercicio_fk`) VALUES
+	(1, 'Press de banca', 'Press horizontal con barra', 'https://youtube.com/pressbanca', 16, 1),
+	(2, 'Jalón al pecho', 'Tirón vertical en polea', 'https://youtube.com/jalon', 5, 2),
+	(3, 'Press militar', 'Press vertical de hombros', 'https://youtube.com/pressmilitar', 6, 3),
+	(4, 'Curl de bíceps con barra', 'Flexión de codo con barra', 'https://youtube.com/curl', 14, 4),
+	(5, 'Extensión de tríceps en polea', 'Extensión de codo en polea alta', 'https://youtube.com/triceps', 13, 5),
+	(6, 'Sentadilla libre', 'Sentadilla con barra en rack', 'https://youtube.com/sentadilla', 15, 7),
+	(7, 'Prensa de piernas', 'Empuje de piernas en máquina', 'https://youtube.com/prensa', 9, 7),
+	(8, 'Extensión de cuádriceps', 'Extensión aislada de rodilla', 'https://youtube.com/extensioncuad', 10, 7),
+	(9, 'Curl femoral', 'Flexión de rodilla en máquina', 'https://youtube.com/curlfer', 11, 8),
+	(10, 'Peso muerto rumano', 'Peso muerto con énfasis en isquios', 'https://youtube.com/pesomuerto', 15, 8),
+	(11, 'Elevación de gemelos', 'Elevación de talones', 'https://youtube.com/gemelos', 12, 10),
+	(12, 'Crunch abdominal', 'Flexión de tronco', 'https://youtube.com/crunch', NULL, 11),
+	(13, 'Plancha frontal', 'Isométrico de core', 'https://youtube.com/plancha', NULL, 11),
+	(14, 'Remo con barra', 'Tirón horizontal de espalda', 'https://youtube.com/remo', 14, 2),
+	(15, 'Face pull', 'Tirón a la cara para deltoides posteriores', 'https://youtube.com/facepull', 13, 3),
+	(16, 'Fondos en paralelas', 'Extensión de tríceps y pecho', 'https://youtube.com/fondos', NULL, 5),
+	(17, 'Dominadas', 'Tirón vertical con peso corporal', 'https://youtube.com/dominadas', NULL, 2),
+	(18, 'Hip thrust', 'Empuje de cadera', 'https://youtube.com/hipthrust', 16, 9),
+	(19, 'Zancadas', 'Zancadas caminando', 'https://youtube.com/zancadas', NULL, 7),
+	(20, 'Remo invertido TRX', 'Remo en suspensión', 'https://youtube.com/trxremo', 17, 2),
+	(21, 'Swing con kettlebell', 'Balanceo de kettlebell', 'https://youtube.com/swing', 18, 9);
 
 	INSERT OR IGNORE INTO `ejercicios_musculo` (`id_ejercicio_musculo_pk`, `id_ejercicio_fk`, `id_musculo_fk`, `id_tipo_participacion_musculo_fk`) VALUES
 		(1, 1, 1, 1),
