@@ -20,6 +20,7 @@ class Sexos(models.Model):
         db_table = "sexos"
         verbose_name = "Sexo"
         verbose_name_plural = "Sexos"
+        ordering = ['nombre_sexo']
 
     def __str__(self):
         return str(self.nombre_sexo)
@@ -37,6 +38,7 @@ class TiposDocumento(models.Model):
         db_table = "tipos_documento"
         verbose_name = "Tipo de documento"
         verbose_name_plural = "Tipos de documento"
+        ordering = ['nombre_tipo_documento']
 
     def __str__(self):
         return str(self.nombre_tipo_documento)
@@ -54,6 +56,7 @@ class TiposSangre(models.Model):
         db_table = "tipos_sangre"
         verbose_name = "Tipo de sangre"
         verbose_name_plural = "Tipos de sangre"
+        ordering = ['nombre_tipo_sangre']
 
     def __str__(self):
         return str(self.nombre_tipo_sangre)
@@ -71,6 +74,7 @@ class EstadosCivil(models.Model):
         db_table = "estados_civil"
         verbose_name = "Estado civil"
         verbose_name_plural = "Estados civiles"
+        ordering = ['nombre_estado_civil']
 
     def __str__(self):
         return str(self.nombre_estado_civil)
@@ -84,6 +88,7 @@ class Roles(models.Model):
         db_table = "roles"
         verbose_name = "Rol"
         verbose_name_plural = "Roles"
+        ordering = ['nombre_rol']
 
     def __str__(self):
         return str(self.nombre_rol)
@@ -102,6 +107,7 @@ class Hospitales(models.Model):
         db_table = "hospitales"
         verbose_name = "Hospital"
         verbose_name_plural = "Hospitales"
+        ordering = ['nombre_hospital']
 
     def __str__(self):
         return str(self.nombre_hospital)
@@ -119,6 +125,7 @@ class Eps(models.Model):
         db_table = "eps"
         verbose_name = "EPS"
         verbose_name_plural = "EPS"
+        ordering = ['nombre_eps']
 
     def __str__(self):
         return str(self.nombre_eps)
@@ -136,6 +143,7 @@ class NivelesAdministrador(models.Model):
         db_table = "niveles_administrador"
         verbose_name = "Nivel de administrador"
         verbose_name_plural = "Niveles de administrador"
+        ordering = ['nombre_nivel_administrador']
 
     def __str__(self):
         return str(self.nombre_nivel_administrador)
@@ -153,6 +161,7 @@ class EspecialidadesEntrenador(models.Model):
         db_table = "especialidades_entrenador"
         verbose_name = "Especialidad de entrenador"
         verbose_name_plural = "Especialidades de entrenador"
+        ordering = ['nombre_especialidad_entrenador']
 
     def __str__(self):
         return str(self.nombre_especialidad_entrenador)
@@ -170,6 +179,7 @@ class EstadosAprendiz(models.Model):
         db_table = "estados_aprendiz"
         verbose_name = "Estado de aprendiz"
         verbose_name_plural = "Estados de aprendiz"
+        ordering = ['nombre_estado_aprendiz']
 
     def __str__(self):
         return str(self.nombre_estado_aprendiz)
@@ -187,6 +197,7 @@ class EstadosFuncionario(models.Model):
         db_table = "estados_funcionario"
         verbose_name = "Estado de funcionario"
         verbose_name_plural = "Estados de funcionario"
+        ordering = ['nombre_estado_funcionario']
 
     def __str__(self):
         return str(self.nombre_estado_funcionario)
@@ -204,6 +215,7 @@ class AntecedentesMedicos(models.Model):
         db_table = "antecedentes_medicos"
         verbose_name = "Antecedente médico"
         verbose_name_plural = "Antecedentes médicos"
+        ordering = ['nombre_antecedente_medico']
 
     def __str__(self):
         return str(self.nombre_antecedente_medico)
@@ -313,6 +325,7 @@ class Usuarios(models.Model):
         db_table = "usuarios"
         verbose_name = "Usuario"
         verbose_name_plural = "Usuarios"
+        ordering = ['apellidos_usuario', 'nombres_usuario']
 
     def __str__(self):
         return f"{self.nombres_usuario} {self.apellidos_usuario}"
@@ -340,9 +353,12 @@ class Entrenadores(models.Model):
         db_table = "entrenadores"
         verbose_name = "Entrenador"
         verbose_name_plural = "Entrenadores"
+        ordering = [
+            "id_usuario_entrenador_fk"
+        ]
 
     def __str__(self):
-        return f"Entrenador {self.id_entrenador_pk}"
+        return f"Entrenador: {self.id_usuario_entrenador_fk}"
 
 
 class Administradores(models.Model):
@@ -368,9 +384,12 @@ class Administradores(models.Model):
         db_table = "administradores"
         verbose_name = "Administrador"
         verbose_name_plural = "Administradores"
+        ordering = [
+            "id_usuario_administrador_fk"
+        ]
 
     def __str__(self):
-        return f"Administrador {self.id_administrador_pk}"
+        return f"Administrador: {self.id_usuario_administrador_fk}"
 
 
 class Funcionarios(models.Model):
@@ -400,9 +419,12 @@ class Funcionarios(models.Model):
         db_table = "funcionarios"
         verbose_name = "Funcionario"
         verbose_name_plural = "Funcionarios"
+        ordering = [
+            "id_usuario_funcionario_fk"
+        ]
 
     def __str__(self):
-        return f"Funcionario {self.id_funcionario_pk}"
+        return f"Funcionario: {self.id_usuario_funcionario_fk}"
 
 
 class Aprendices(models.Model):
@@ -425,9 +447,12 @@ class Aprendices(models.Model):
         db_table = "aprendices"
         verbose_name = "Aprendiz"
         verbose_name_plural = "Aprendices"
+        ordering = [
+            "id_usuario_aprendiz_fk"
+        ]
 
     def __str__(self):
-        return f"Aprendiz {self.id_aprendiz_pk}"
+        return f"Aprendiz: {self.id_usuario_aprendiz_fk}"
 
 
 class FichasUsuarios(models.Model):
@@ -452,6 +477,7 @@ class FichasUsuarios(models.Model):
         db_table = "fichas_usuarios"
         verbose_name = "Ficha de usuario"
         verbose_name_plural = "Fichas de usuarios"
+        ordering = ['-fecha_inscripcion']
 
     def __str__(self):
-        return f"Ficha Usuario {self.id_ficha_usuario_pk}"
+        return f"Ficha {self.id_ficha_fk} - {self.id_usuario_ficha_fk}"

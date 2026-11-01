@@ -19,6 +19,7 @@ class Regiones(models.Model):
         db_table = "regiones"
         verbose_name = "Región"
         verbose_name_plural = "Regiones"
+        ordering = ['nombre_region']
 
     def __str__(self):
         return str(self.nombre_region)
@@ -43,6 +44,7 @@ class Departamentos(models.Model):
         db_table = "departamentos"
         verbose_name = "Departamento"
         verbose_name_plural = "Departamentos"
+        ordering = ['nombre_departamento']
 
     def __str__(self):
         return str(self.nombre_departamento)
@@ -67,6 +69,7 @@ class Municipios(models.Model):
         db_table = "municipios"
         verbose_name = "Municipio"
         verbose_name_plural = "Municipios"
+        ordering = ['nombre_municipio']
 
     def __str__(self):
         return str(self.nombre_municipio)
@@ -92,6 +95,7 @@ class CentrosFormacion(models.Model):
         db_table = "centros_formacion"
         verbose_name = "Centro de formación"
         verbose_name_plural = "Centros de formación"
+        ordering = ['nombre_centro']
 
     def __str__(self):
         return str(self.nombre_centro)
@@ -112,6 +116,7 @@ class Sedes(models.Model):
         db_table = "sedes"
         verbose_name = "Sede"
         verbose_name_plural = "Sedes"
+        ordering = ['nombre_sede']
 
     def __str__(self):
         return str(self.nombre_sede)
@@ -136,6 +141,7 @@ class DependenciasFuncionario(models.Model):
         db_table = "dependencias_funcionario"
         verbose_name = "Dependencia de funcionario"
         verbose_name_plural = "Dependencias de funcionario"
+        ordering = ['nombre_dependencia_funcionario']
 
     def __str__(self):
         return str(self.nombre_dependencia_funcionario)

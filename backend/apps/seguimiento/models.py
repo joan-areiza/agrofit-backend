@@ -22,6 +22,7 @@ class EstadosAsignacion(models.Model):
         db_table = "estados_asignacion"
         verbose_name = "Estado de asignación"
         verbose_name_plural = "Estados de asignación"
+        ordering = ['nombre_estado_asignacion']
 
     def __str__(self):
         return str(self.nombre_estado_asignacion)
@@ -41,7 +42,7 @@ class AsignacionesRutinaUsuario(models.Model):
         "usuarios.Aprendices",
         on_delete=models.CASCADE,
         db_column="id_usuario_fk",
-        verbose_name="Aprendiz",
+        verbose_name="Usuario",
     )
     fecha_hora_inicio_asignacion_rutina = models.DateTimeField(
         auto_now_add=True, verbose_name="Fecha y hora de inicio"
@@ -66,9 +67,10 @@ class AsignacionesRutinaUsuario(models.Model):
         db_table = "asignaciones_rutina_usuario"
         verbose_name = "Asignación de rutina a usuario"
         verbose_name_plural = "Asignaciones de rutina a usuarios"
+        ordering = ['-fecha_hora_inicio_asignacion_rutina']
 
     def __str__(self):
-        return f"Rutina {self.id_rutina_fk} -> Aprendiz {self.id_usuario_fk}"
+        return f"Rutina {self.id_rutina_fk} - Aprendiz {self.id_usuario_fk}"
 
 
 class Asistencias(models.Model):
@@ -104,6 +106,7 @@ class Asistencias(models.Model):
         db_table = "asistencias"
         verbose_name = "Asistencia"
         verbose_name_plural = "Asistencias"
+        ordering = ['-fecha_asistencia']
 
     def __str__(self):
         return (
@@ -179,6 +182,7 @@ class EvaluacionesFisicas(models.Model):
         db_table = "evaluaciones_fisicas"
         verbose_name = "Evaluación física"
         verbose_name_plural = "Evaluaciones físicas"
+        ordering = ['-fecha_evaluacion']
 
     def __str__(self):
         return f"Evaluación {self.id_evaluacion_fisica_pk}"
@@ -196,6 +200,7 @@ class EstadosSeguimiento(models.Model):
         db_table = "estados_seguimiento"
         verbose_name = "Estado de seguimiento"
         verbose_name_plural = "Estados de seguimiento"
+        ordering = ['nombre_estado_seguimiento']
 
     def __str__(self):
         return str(self.nombre_estado_seguimiento)
@@ -242,6 +247,7 @@ class SeguimientosProgresoUsuario(models.Model):
         db_table = "seguimientos_progreso_usuario"
         verbose_name = "Seguimiento de progreso de usuario"
         verbose_name_plural = "Seguimientos de progreso de usuario"
+        ordering = ['-fecha_registro_progreso']
 
     def __str__(self):
         return f"Seguimiento {self.id_seguimiento_progreso_usuario_pk}"

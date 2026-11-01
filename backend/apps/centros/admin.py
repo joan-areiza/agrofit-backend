@@ -56,3 +56,4 @@ admin.site.register(Municipios, MunicipiosAdmin)
 admin.site.register(CentrosFormacion, CentrosFormacionAdmin)
 admin.site.register(Sedes, SedesAdmin)
 admin.site.register(DependenciasFuncionario, DependenciasFuncionarioAdmin)
+

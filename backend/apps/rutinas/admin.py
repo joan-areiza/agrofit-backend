@@ -38,7 +38,7 @@ class ComplexionesFisicasAdmin(admin.ModelAdmin):
 class MusculosAdmin(admin.ModelAdmin):
     list_display = ("id_musculo_pk", "nombre_musculo", "id_parte_cuerpo_musculo_fk")
     list_filter = ("id_parte_cuerpo_musculo_fk",)
-    search_fields = ("nombre_musculo", "decripcion_musculo")
+    search_fields = ("nombre_musculo", "descripcion_musculo")
 class EjerciciosAdmin(admin.ModelAdmin):
     list_display = (
         "id_ejercicio_pk",

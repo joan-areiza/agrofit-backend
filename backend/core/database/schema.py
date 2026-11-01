@@ -2099,8 +2099,9 @@ def init_db():
 	(3, 3, 3, '2026-01-10'),
 	(4, 4, 1, '2026-02-12');
 
-	INSERT OR IGNORE INTO `aprendices` (`id_aprendiz_pk`, `id_usuario_aprendiz_fk`) VALUES (1, 1);
-
+	INSERT OR IGNORE INTO `aprendices` 
+	(`id_aprendiz_pk`, `id_usuario_aprendiz_fk`, `id_estado_aprendiz_fk`) 
+	VALUES (1, 1, 1);
 	INSERT OR IGNORE INTO `estados_maquina` (`id_estado_maquina_pk`, `nombre_estado_maquina`) VALUES 
 		(1, 'Disponible'),
 		(2, 'En Mantenimiento'),

@@ -21,6 +21,7 @@ class EstadosContacto(models.Model):
         db_table = "estados_contacto"
         verbose_name = "Estado de contacto"
         verbose_name_plural = "Estados de contacto"
+        ordering = ['nombre_estado']
 
     def __str__(self):
         return str(self.nombre_estado)
@@ -37,7 +38,7 @@ class MensajesContacto(models.Model):
     titulo_mensaje = models.CharField(max_length=150, verbose_name="Título del mensaje")
     contenido_mensaje = RichTextField(verbose_name="Contenido del mensaje")
     fecha_envio = models.DateTimeField(
-        auto_now_add="True", verbose_name="Fecha de envío"
+        auto_now_add=True, verbose_name="Fecha de envío"
     )
     id_estado_contacto_fk = models.ForeignKey(
         "EstadosContacto",
@@ -50,6 +51,7 @@ class MensajesContacto(models.Model):
         db_table = "mensajes_contacto"
         verbose_name = "Mensaje de contacto"
         verbose_name_plural = "Mensajes de contacto"
+        ordering = ['-fecha_envio']
 
     def __str__(self):
         return str(self.titulo_mensaje)

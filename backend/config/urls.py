@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+# Configurar para cargar imagenes
+if settings.DEBUG:
+    # Podemos tener accesible la función static que permite cargar de una url a un fichero estatico
+    # que pueda leer el framework
+    from django.conf.urls.static import static
+
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

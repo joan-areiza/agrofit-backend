@@ -23,6 +23,7 @@ class TiposMaquina(models.Model):
         db_table = "tipos_maquina"
         verbose_name = "Tipo de máquina"
         verbose_name_plural = "Tipos de máquina"
+        ordering = ['nombre_tipo_maquina']
 
     def __str__(self):
         return str(self.nombre_tipo_maquina)
@@ -40,6 +41,7 @@ class EstadosMaquina(models.Model):
         db_table = "estados_maquina"
         verbose_name = "Estado de máquina"
         verbose_name_plural = "Estados de máquina"
+        ordering = ['nombre_estado_maquina']
 
     def __str__(self):
         return str(self.nombre_estado_maquina)
@@ -71,6 +73,7 @@ class Maquinas(models.Model):
         db_table = "maquinas"
         verbose_name = "Máquina"
         verbose_name_plural = "Máquinas"
+        ordering = ['nombre_maquina']
 
     def __str__(self):
         return str(self.nombre_maquina)
@@ -99,6 +102,7 @@ class Horarios(models.Model):
         db_table = "horarios"
         verbose_name = "Horario"
         verbose_name_plural = "Horarios"
+        ordering = ['hora_inicio_horario']
 
     def __str__(self):
-        return f"{self.hora_inicio_horario} - {self.hora_fin_horario}"
+        return f"De {self.hora_inicio_horario} a {self.hora_fin_horario}"

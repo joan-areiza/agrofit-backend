@@ -19,6 +19,7 @@ class Jornadas(models.Model):
         db_table = "jornadas"
         verbose_name = "Jornada"
         verbose_name_plural = "Jornadas"
+        ordering = ['nombre_jornada']
 
     def __str__(self):
         return str(self.nombre_jornada)
@@ -34,6 +35,7 @@ class Modalidades(models.Model):
         db_table = "modalidades"
         verbose_name = "Modalidad"
         verbose_name_plural = "Modalidades"
+        ordering = ['nombre_modalidad']
 
     def __str__(self):
         return str(self.nombre_modalidad)
@@ -51,6 +53,7 @@ class NivelesFormacionPrograma(models.Model):
         db_table = "niveles_formacion_programa"
         verbose_name = "Nivel de formación"
         verbose_name_plural = "Niveles de formación"
+        ordering = ['nombre_nivel_formacion_programa']
 
     def __str__(self):
         return str(self.nombre_nivel_formacion_programa)
@@ -68,6 +71,7 @@ class RequisitosPrograma(models.Model):
         db_table = "requisitos_programa"
         verbose_name = "Requisito de programa"
         verbose_name_plural = "Requisitos de programa"
+        ordering = ['nombre_requisito_programa']
 
     def __str__(self):
         return str(self.nombre_requisito_programa)
@@ -106,6 +110,7 @@ class ProgramasFormacion(models.Model):
         db_table = "programas_formacion"
         verbose_name = "Programa de formación"
         verbose_name_plural = "Programas de formación"
+        ordering = ['nombre_programa']
 
     def __str__(self):
         return str(self.nombre_programa)
@@ -156,6 +161,7 @@ class FichasFormacion(models.Model):
         db_table = "fichas_formacion"
         verbose_name = "Ficha de formación"
         verbose_name_plural = "Fichas de formación"
+        ordering = ['numero_ficha']
 
     def __str__(self):
         return str(self.numero_ficha)
